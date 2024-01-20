@@ -1,27 +1,26 @@
-package stud;
+package stud.gui;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 
-
-public class searchPanel extends JPanel{
+public class APPMenuBar extends JMenuBar{
     public JTextField searchField;
     public JButton searchButton;
     public JComboBox searchBy;
     private JLabel searchLabel;
     public String selected;
-    public searchPanel() {
+    public APPMenuBar() {
 
         String[] searchByItem={"Reagister","Name"};
         searchField = new JTextField("Search",30);
         searchButton = new JButton("search");
         searchLabel = new JLabel("search by");
         searchBy = new JComboBox(searchByItem);
-        searchLabel.setBounds(100,100,50,50);
-        searchBy.setBounds(150,100,100,50);
-        searchField.setBounds(150,200,100,50);
-        searchButton.setBounds(150,300,50,50);
+        searchLabel.setSize(50,50);
+        searchBy.setSize(50,50);
+        searchField.setSize(50,50);
+        searchButton.setSize(50,50);
         ItemListener serchBylistener = new ItemListener(){
             public void itemStateChanged(ItemEvent event){
                 if(event.getSource() == searchBy){
@@ -39,11 +38,16 @@ public class searchPanel extends JPanel{
             }
         };
         searchButton.addActionListener(buttonListener);
+        setLayout(new FlowLayout(FlowLayout.LEFT));
+        try{
         add(searchLabel);
         add(searchBy);
         add(searchField);
         add(searchButton);
-        setSize(getPreferredSize());
+        }catch(Exception e){
+            System.out.println("add in search panel"+ e.getMessage());
+        }
+        setSize(400,50);
         setVisible(true);
         setBackground(Color.RED);
 
