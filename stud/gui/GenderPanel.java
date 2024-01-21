@@ -20,7 +20,7 @@ public class GenderPanel extends JPanel{
         setLayout(null);
         add(male);
         add(female);
-        // setBackground(new Color(0,0,0,0));
+        setBackground(new Color(224,224,224));
         setVisible(true);
     }
     
