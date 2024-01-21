@@ -35,7 +35,7 @@ public class APP {
         frame.add(search, BorderLayout.NORTH);
         frame.add(viewJPanel, BorderLayout.CENTER);
         // entry.setVisible(true);
-        frame.setSize(1000,1000);
+        frame.setSize(1080,720);
         frame.setResizable(true);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
