@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class APP {
+public class Test {
     static public JFrame frame;
     static public JButton button;
     static public JPanel viewJPanel;
@@ -21,7 +21,6 @@ public class APP {
         frame = new JFrame("TestFrame");
         frame.setLayout(new BorderLayout());
         viewJPanel = new JPanel();
-        viewJPanel.setBackground(new Color(54, 54, 54));
         viewJPanel.setLayout(new FlowLayout(FlowLayout.CENTER,10,20));
         search = new APPMenuBar();
         entry = new entryPanel();
@@ -32,6 +31,7 @@ public class APP {
         // entry.setSize(500,400);
         // viewJPanel.add(res);
         // viewJPanel.add(entry);
+        viewJPanel.setBackground(Color.RED);
         frame.add(search, BorderLayout.NORTH);
         frame.add(viewJPanel, BorderLayout.CENTER);
         // entry.setVisible(true);

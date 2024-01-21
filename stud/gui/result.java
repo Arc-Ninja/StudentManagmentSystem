@@ -1,5 +1,5 @@
 
-// package stud;
+package stud.gui;
 import java.awt.*;
 import javax.swing.*;
 
@@ -107,16 +107,16 @@ public class result extends JPanel {
         // -----------------------------
     }
 
-    public static void main(String[] args) {
-        result r = new result();
-        JFrame f = new JFrame("Result");
-        f.add(r);
-        f.setSize(1080, 720);
-        f.getContentPane().setBackground(new Color(54, 54, 54));
-        f.setResizable(true);
-        f.setVisible(true);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
+    // public static void main(String[] args) {
+    //     result r = new result();
+    //     JFrame f = new JFrame("Result");
+    //     f.add(r);
+    //     f.setSize(1080, 720);
+    //     f.getContentPane().setBackground(new Color(54, 54, 54));
+    //     f.setResizable(true);
+    //     f.setVisible(true);
+    //     f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    //     f.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
-    }
+    // }
 }
