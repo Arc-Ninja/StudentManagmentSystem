@@ -52,7 +52,7 @@ public class APPMenuBar extends JMenuBar{
         }
         setSize(400,50);
         setVisible(true);
-        setBackground(Color.RED);
+        // setBackground(Color.RED);
 
 
     }
