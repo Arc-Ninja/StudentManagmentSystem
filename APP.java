@@ -9,7 +9,6 @@ import java.awt.event.*;
 
 public class APP {
     static public JFrame frame;
-    static public JButton button;
     static public JPanel viewJPanel;
     static public APPMenuBar search;
     static public entryPanel entry;
@@ -17,7 +16,6 @@ public class APP {
     static public ActionListener eventHandler;
     public static void main(String[] args) {
         eventHandler = new EventHandle(); 
-        button = new JButton("Button");
         frame = new JFrame("TestFrame");
         frame.setLayout(new BorderLayout());
         viewJPanel = new JPanel();
@@ -26,15 +24,11 @@ public class APP {
         search = new APPMenuBar();
         entry = new entryPanel();
         res= new result();
-        search.add(button);
         search.searchButton.addActionListener(eventHandler);
-        button.addActionListener(eventHandler);
-        // entry.setSize(500,400);
-        // viewJPanel.add(res);
-        // viewJPanel.add(entry);
+        search.entryButton.addActionListener(eventHandler);
+        viewJPanel.add(entry);
         frame.add(search, BorderLayout.NORTH);
         frame.add(viewJPanel, BorderLayout.CENTER);
-        // entry.setVisible(true);
         frame.setSize(1080,720);
         frame.setResizable(true);
         frame.setVisible(true);
@@ -42,7 +36,7 @@ public class APP {
     }
     static class EventHandle implements ActionListener {
         public void actionPerformed(ActionEvent event){
-            if(event.getSource()==button){
+            if(event.getSource()==search.entryButton){
                 viewJPanel.remove(res);
                 viewJPanel.add(entry);
                 

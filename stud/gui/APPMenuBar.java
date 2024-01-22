@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class APPMenuBar extends JMenuBar{
     public JTextField searchField;
-    public JButton searchButton;
+    public JButton searchButton,entryButton;
     public JComboBox searchBy;
     private JLabel searchLabel;
     public String selected;
@@ -21,6 +21,8 @@ public class APPMenuBar extends JMenuBar{
         searchBy.setSize(50,50);
         searchField.setSize(50,50);
         searchButton.setSize(50,50);
+        entryButton = new JButton("entry");
+        entryButton.setSize(50,50);
         ItemListener serchBylistener = new ItemListener(){
             public void itemStateChanged(ItemEvent event){
                 if(event.getSource() == searchBy){
@@ -40,6 +42,7 @@ public class APPMenuBar extends JMenuBar{
         searchButton.addActionListener(buttonListener);
         setLayout(new FlowLayout(FlowLayout.LEFT));
         try{
+            add(entryButton);
         add(searchLabel);
         add(searchBy);
         add(searchField);
