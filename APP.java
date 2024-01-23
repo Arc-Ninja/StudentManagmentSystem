@@ -24,18 +24,20 @@ public class APP {
         viewJPanel.setBackground(new Color(54, 54, 54));
         viewJPanel.setLayout(new FlowLayout(FlowLayout.CENTER,10,20));
         
-        
+        // JPanel test = new JPanel();
+        // test.setPreferredSize((new Dimension(200,200)));
         search = new APPMenuBar();
         entry = new entryPanel();
         res= new result();
         search.searchButton.addActionListener(eventHandler);
         search.entryButton.addActionListener(eventHandler);
         viewJPanel.add(entry);
-        scrollPane = new JScrollPane(viewJPanel,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scrollPane = new JScrollPane(viewJPanel,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setViewportView(viewJPanel);
         scrollPane.setPreferredSize(new Dimension(900,700));
         frame.add(search, BorderLayout.NORTH);
         frame.add(scrollPane, BorderLayout.CENTER);
+        // frame.add(test,BorderLayout.EAST);
         frame.setSize(1080,720);
         frame.setResizable(true);
         frame.setVisible(true);
