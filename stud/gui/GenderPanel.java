@@ -12,8 +12,13 @@ public class GenderPanel extends JPanel{
         male.setFont(new Font("serif", Font.PLAIN,16));
         female.setBounds(120,5,100,20);
         female.setFont(new Font("serif", Font.PLAIN,16));
+<<<<<<< Updated upstream
         male.setBackground(new Color(224,224,224));
         female.setBackground(new Color(224,224,224));
+=======
+        male.setBackground(new Color(224,224,224,255));
+        female.setBackground(new Color(224,224,224,255));
+>>>>>>> Stashed changes
         gender = new ButtonGroup();
         gender.add(male);
         gender.add(female);

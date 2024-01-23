@@ -2,23 +2,26 @@ package stud;
 
 import stud.helpler.Address;
 import stud.helpler.Name;
+import stud.helpler.Date;
 
 public class Student {
     protected long  registerNo=-1;
     protected Name studName;
+    protected Date birthDate;
     protected Address address;
     protected Name fatherName;
     protected Name motherName;
     protected String contact;
     protected String gender;
-    public Student(long registerNo, Name studName, String gender, Address address, Name fatherName, Name motherName, String contact){
+    public Student(long registerNo, Name studName, Date birthDate ,String gender, Address address, Name fatherName, Name motherName, String contact){
         try{
-            if(registerNo>-1 &&studName!=null &&gender!=""){
+            if(registerNo>-1 &&studName!=null &&gender!="" && birthDate!=null){
             this.registerNo = registerNo;
             this.studName = studName;
+            this.birthDate = birthDate;
             this.gender = gender;
             }else{
-                throw new Exception("resgister and name should not be null");
+                throw new Exception("resgister, name, date of birth and  should not be null");
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -28,8 +31,8 @@ public class Student {
         this.motherName = motherName;
         this.contact = contact;
     }
-    protected Student(long registerNo, Name studName, String gender){
-        this(registerNo, studName,gender, null, null, null,"");
+    protected Student(long registerNo, Name studName, Date birDate ,String gender){
+        this(registerNo, studName,birDate,gender, null, null, null,"");
     }
     public long getRegisterNo(){
         return this.registerNo;
@@ -48,6 +51,9 @@ public class Student {
     }
     public Name getMotherName(){
         return this.motherName;
+    }
+    public Date getBirDate() {
+        return this.birthDate;
     }
     public String getContact(){
         return this.contact;
