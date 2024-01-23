@@ -15,22 +15,23 @@ public class entryPanel extends JPanel{
     public ContactPanel studentContact;
     public AddressPanel studentAddress;
     public GenderPanel studentGender;
+    public DateOfBirthPanel studentDateofBirth;
 
 
     public entryPanel(){
-        labels = new JLabel[6];
-        String[] labelsName = {"Student Name","Student Gender","Student Contact","Father Name","Mother Name","Student Address"};
+        labels = new JLabel[7];
+        String[] labelsName = {"Student Name","Student Date of Birth","Student Gender","Student Contact","Father Name","Mother Name","Student Address"};
         
-        setPreferredSize(new Dimension(800,950));
-        for(int i=0;i<6;i++){
+        setPreferredSize(new Dimension(800,1050));
+        for(int i=0;i<7;i++){
             labels[i] = new JLabel(labelsName[i]);
             labels[i].setFont(new Font("Serif", Font.PLAIN, 20));
         }
         
         clear=new JButton("Clear");
         submit = new JButton("Submit");
-        clear.setBounds(480,850,120,50);
-        submit.setBounds(630,850,120,50);
+        clear.setBounds(480,950,120,50);
+        submit.setBounds(630,950,120,50);
         clear.setFont(new Font("Serif", Font.PLAIN, 18));
         submit.setFont(new Font("Serif", Font.PLAIN, 18));
         add(clear);
@@ -43,8 +44,9 @@ public class entryPanel extends JPanel{
         studentAddress=new AddressPanel();
         studentContact = new ContactPanel();
         studentGender = new GenderPanel();
+        studentDateofBirth=new DateOfBirthPanel();
         setLayout(null);
-        JComponent[] components = {studentRresgister,labels[0],studentName,labels[1],studentGender,labels[2],studentContact,labels[3],fatherName,labels[4],motherName,labels[5],studentAddress};
+        JComponent[] components = {studentRresgister,labels[0],studentName,labels[1],studentDateofBirth,labels[2],studentGender,labels[3],studentContact,labels[4],fatherName,labels[5],motherName,labels[6],studentAddress};
         int poy=60;
 
         for(JComponent comp :components){
@@ -66,6 +68,8 @@ public class entryPanel extends JPanel{
             }
             else if(comp instanceof JLabel){
                 height=30;
+            }else if(comp instanceof DateOfBirthPanel){
+                height=60;
             }
             comp.setBounds(50,poy,700,height);
             poy+=height+10;
@@ -73,7 +77,7 @@ public class entryPanel extends JPanel{
         }
         //adding shadows
         JLabel card_img = new JLabel();
-        card_img.setBounds(0, 0, 800, 950);
+        card_img.setBounds(0, 0, 800, 1050);
         card_img.setBackground(new Color(255, 255, 255, 255));
         ImageIcon cicon = new ImageIcon("./resource/card2.png");
         Image cimg = cicon.getImage();
