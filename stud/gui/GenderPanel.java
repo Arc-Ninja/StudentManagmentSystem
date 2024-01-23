@@ -12,8 +12,8 @@ public class GenderPanel extends JPanel{
         male.setFont(new Font("serif", Font.PLAIN,16));
         female.setBounds(120,5,100,20);
         female.setFont(new Font("serif", Font.PLAIN,16));
-        male.setBackground(new Color(0,0,0,0));
-        female.setBackground(new Color(0,0,0,0));
+        male.setBackground(new Color(224,224,224));
+        female.setBackground(new Color(224,224,224));
         gender = new ButtonGroup();
         gender.add(male);
         gender.add(female);
@@ -21,6 +21,11 @@ public class GenderPanel extends JPanel{
         add(male);
         add(female);
         setBackground(new Color(224,224,224));
+        male.setFocusPainted(false);
+        female.setFocusPainted(false);
+        male.setVisible(true);
+        female.setVisible(true);
+        
         setVisible(true);
     }
     
