@@ -35,6 +35,13 @@ public class APP {
         scrollPane = new JScrollPane(viewJPanel,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setViewportView(viewJPanel);
         scrollPane.setPreferredSize(new Dimension(900,700));
+        JScrollBar vscroll = scrollPane.getVerticalScrollBar();
+        vscroll.setUnitIncrement(7);
+        vscroll.setBlockIncrement(150);
+        vscroll = scrollPane.getHorizontalScrollBar();
+        vscroll.setUnitIncrement(7);
+        vscroll.setBlockIncrement(150);
+        
         frame.add(search, BorderLayout.NORTH);
         frame.add(scrollPane, BorderLayout.CENTER);
         // frame.add(test,BorderLayout.EAST);
