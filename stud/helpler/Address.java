@@ -1,6 +1,7 @@
 
 package stud.helpler;
-public class Address {
+import java.io.Serializable;
+public class Address implements Serializable{
     protected String loacation;
     protected String city;
     protected String distric;

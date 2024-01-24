@@ -1,10 +1,12 @@
 package stud;
 
+import java.io.Serializable;
+
 import stud.helpler.Address;
 import stud.helpler.Name;
 import stud.helpler.Date;
 
-public class Student {
+public class Student implements Serializable{
     protected long  registerNo=-1;
     protected Name studName;
     protected Date birthDate;

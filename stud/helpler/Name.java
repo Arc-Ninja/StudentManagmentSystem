@@ -1,7 +1,7 @@
 
 package stud.helpler;
-
-public class Name {
+import java.io.Serializable;
+public class Name implements Serializable{
     private String firstName, middleName, lastName;
     public Name(String firstName, String middleName, String lastName) {
         this.firstName = firstName;
