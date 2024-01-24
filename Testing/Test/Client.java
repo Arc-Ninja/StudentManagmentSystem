@@ -16,7 +16,7 @@ public class Client {
         String msg=cin.nextLine();;
         
         out.writeUTF(msg);
-        if(msg!="exit"){
+        if(!msg.equals("exit")){
             msg=(String)in.readUTF();
             System.out.println(msg);
             while(!msg.equals("exit")){

@@ -25,11 +25,12 @@ class ClientHandler extends Thread{
                 System.out.println(socket.getInetAddress()+":"+socket.getPort()+"->"+msg);
                 msg=(String)in.readUTF();
             }while(!msg.equals("exit"));
-            System.out.println(getName()+": completed!");
             // socket.close();
         }
         }catch(Exception e){
 
+        }finally{
+            System.out.println(getName()+": completed!");
         }
 
     }
