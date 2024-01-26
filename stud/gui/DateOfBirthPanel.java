@@ -42,5 +42,10 @@ public class DateOfBirthPanel extends JPanel{
             c.addItem(i);
         }
     }
+    public void clear(){
+        dayBox.setSelectedItem(dayBox.getItemAt(0));
+        monthBox.setSelectedItem(monthBox.getItemAt(0));
+        yearBox.setSelectedItem(yearBox.getItemAt(0));
+    }
     
 }

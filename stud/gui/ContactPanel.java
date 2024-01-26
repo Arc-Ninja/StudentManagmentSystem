@@ -28,5 +28,9 @@ public class ContactPanel extends JPanel{
         // this.setSize(new Dimension(800,60));
         setVisible(true);
     }
+    public void clear(){
+        Number.setText("");
+        TEmail.setText("");
+    }
     
 }

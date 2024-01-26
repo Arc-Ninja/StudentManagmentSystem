@@ -5,13 +5,17 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
 public class AddressPanel extends JPanel{
-    public JLabel LLocation,LCity,LDistrict,LState,LCountry,LZipCode;
-    public JTextField TLocation,TCity,TDistrict,TState,TCountry,TZipCode;
+    // public JLabel LLocation,LCity,LDistrict,LState,LCountry,LZipCode;
+    // public JTextField TLocation,TCity,TDistrict,TState,TCountry,TZipCode;
+    public JLabel LLocation;
+    public JTextField TLocation;
+    JLabel[] carr;
+    JTextField[] Tarr;
     private String Larr[]={ "City","District","State", "Country", "ZipCode"};
     public AddressPanel(){
         setLayout(null);
-        JComponent[] carr={LCity,LDistrict,LState,LCountry,LZipCode};
-        JComponent[] Tarr={TCity,TDistrict,TState,TCountry,TZipCode};
+        carr=new JLabel[5];
+        Tarr=new JTextField[5];
         for(int i=0;i<5;i++) {
             carr[i]=new JLabel(Larr[i]);
         }
@@ -57,5 +61,11 @@ public class AddressPanel extends JPanel{
         this.setVisible(true);
         // this.setSize(new Dimension(800,140));
         
+    }
+    public void clear(){
+        TLocation.setText("");
+        for(int i=0;i<5;i++){
+            Tarr[i].setText("");
+        }
     }
 }

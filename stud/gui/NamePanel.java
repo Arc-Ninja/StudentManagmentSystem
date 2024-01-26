@@ -37,6 +37,11 @@ public class NamePanel extends JPanel{
         this.setVisible(true);
         // this.setSize(new Dimension(800,50));
     }
+    public void clear(){
+        TFName.setText("");
+        TMName.setText("");
+        TLName.setText("");
+    }
         
     
 }

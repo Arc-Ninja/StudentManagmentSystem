@@ -3,6 +3,7 @@ package stud.gui;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import stud.gui.EventHandle.*;
 
 import stud.helpler.*;
 public class entryPanel extends JPanel{
@@ -16,7 +17,7 @@ public class entryPanel extends JPanel{
     public AddressPanel studentAddress;
     public GenderPanel studentGender;
     public DateOfBirthPanel studentDateofBirth;
-
+    public entryPanelEvent eventLis;
 
     public entryPanel(){
         labels = new JLabel[7];
@@ -29,6 +30,8 @@ public class entryPanel extends JPanel{
         }
         
         clear=new JButton("Clear");
+        eventLis = new entryPanelEvent(this);
+        clear.addActionListener(eventLis);
         submit = new JButton("Submit");
         clear.setBounds(480,950,120,50);
         submit.setBounds(630,950,120,50);
@@ -93,5 +96,16 @@ public class entryPanel extends JPanel{
         setVisible(true);
         
         
+    }
+    public void clear(){
+        studentRresgister.clear();
+        studentName.clear();
+        fatherName.clear();
+        motherName.clear();
+        studentGender.clear();
+        studentAddress.clear();
+        studentContact.clear();
+        studentDateofBirth.clear();
+
     }
 }

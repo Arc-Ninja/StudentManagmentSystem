@@ -24,5 +24,8 @@ public class RegisterPanel extends JPanel{
         // this.setSize(new Dimension(400,30));
 
     }
+    public void clear(){
+        TRegister.setText("");
+    }
     
 }

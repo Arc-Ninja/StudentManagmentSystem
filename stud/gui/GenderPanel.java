@@ -29,5 +29,9 @@ public class GenderPanel extends JPanel{
         
         setVisible(true);
     }
+    public void clear(){
+        male.setSelected(false);
+        female.setSelected(false);
+    }
     
 }
