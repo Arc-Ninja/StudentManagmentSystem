@@ -29,7 +29,9 @@ public class APPMenuBarEvent implements ItemListener,ActionListener,MouseListene
         this.viewJPanel.revalidate();
     }
     public void mouseClicked(MouseEvent event){
+        if(event.getSource()==menuBar.searchField){
         menuBar.searchField.setText("");
+        }
     }
     public void mouseExited(MouseEvent event){}
     public void mouseReleased(MouseEvent event){}
