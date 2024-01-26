@@ -8,4 +8,9 @@ example: <code>javac -cp ./  ./stud/gui/APPMenuBar.java </code><br>
 after compiling all java files run <br>
 <code>java APP</code>  <br>
 from the root folder of repo
+<br><br><br>
+To run the program in Testing/Test Folder<br>
+command<br>
+Server: <code>java Testing.Test.Server</code><br>
+Client: <code>java Testing.Test.Client</code>
 </p>
