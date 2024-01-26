@@ -7,7 +7,7 @@ import stud.gui.*;
 import stud.helpler.*;
 import stud.*;
 
-public class APPMenuBarEvent implements ItemListener,ActionListener{
+public class APPMenuBarEvent implements ItemListener,ActionListener,MouseListener{
     public APPMenuBar menuBar;
     public JPanel viewJPanel;
     public entryPanel entry;
@@ -28,6 +28,13 @@ public class APPMenuBarEvent implements ItemListener,ActionListener{
         }
         this.viewJPanel.revalidate();
     }
+    public void mouseClicked(MouseEvent event){
+        menuBar.searchField.setText("");
+    }
+    public void mouseExited(MouseEvent event){}
+    public void mouseReleased(MouseEvent event){}
+    public void mouseEntered(MouseEvent event){}
+    public void mousePressed(MouseEvent event){}
     public void itemStateChanged(ItemEvent event){
         if(event.getSource()==menuBar.searchBy){
             menuBar.searchField.setText(menuBar.searchBy.getSelectedItem().toString());

@@ -45,6 +45,7 @@ public class APPMenuBar extends JMenuBar{
         searchBy.addItemListener(eventLis);
         entryButton.addActionListener(eventLis);
         searchButton.addActionListener(eventLis);
+        searchField.addMouseListener(eventLis);
         setLayout(new FlowLayout(FlowLayout.LEFT));
         try{
             add(entryButton);
