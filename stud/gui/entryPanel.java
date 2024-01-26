@@ -33,6 +33,7 @@ public class entryPanel extends JPanel{
         eventLis = new entryPanelEvent(this);
         clear.addActionListener(eventLis);
         submit = new JButton("Submit");
+        submit.addActionListener(eventLis);
         clear.setBounds(480,950,120,50);
         submit.setBounds(630,950,120,50);
         clear.setFont(new Font("Serif", Font.PLAIN, 18));
