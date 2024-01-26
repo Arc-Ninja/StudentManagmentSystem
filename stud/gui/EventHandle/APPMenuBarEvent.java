@@ -12,6 +12,7 @@ public class APPMenuBarEvent implements ItemListener,ActionListener,MouseListene
     public JPanel viewJPanel;
     public entryPanel entry;
     public result resultPanel;
+    public boolean searchFlag = true;
     public APPMenuBarEvent(APPMenuBar menuBar,JPanel viJPanel,entryPanel entry,result resultPanel){
         this.menuBar = menuBar;
         this.viewJPanel = viJPanel;
@@ -29,8 +30,9 @@ public class APPMenuBarEvent implements ItemListener,ActionListener,MouseListene
         this.viewJPanel.revalidate();
     }
     public void mouseClicked(MouseEvent event){
-        if(event.getSource()==menuBar.searchField){
+        if(event.getSource()==menuBar.searchField && searchFlag){
         menuBar.searchField.setText("");
+        searchFlag = false;
         }
     }
     public void mouseExited(MouseEvent event){}
@@ -40,6 +42,7 @@ public class APPMenuBarEvent implements ItemListener,ActionListener,MouseListene
     public void itemStateChanged(ItemEvent event){
         if(event.getSource()==menuBar.searchBy){
             menuBar.searchField.setText(menuBar.searchBy.getSelectedItem().toString());
+            searchFlag = true;
         }
     }
 }
