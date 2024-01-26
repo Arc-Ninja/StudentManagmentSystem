@@ -1,10 +1,13 @@
+package Testing.Test;
 import java.net.*;
 import java.io.*;
-
+import stud.*;
+import stud.helpler.*;
 class ClientHandler extends Thread{
     Socket socket;
     DataInputStream in;
     DataOutputStream out;
+    ObjectInputStream oin;
     public ClientHandler(Socket socket,int i) throws Exception{
         super(String.valueOf(i));
         this.socket = socket;
@@ -12,6 +15,9 @@ class ClientHandler extends Thread{
         socket=null;
         in = new DataInputStream(this.socket.getInputStream());
         out = new DataOutputStream(this.socket.getOutputStream());
+        oin = new ObjectInputStream(this.socket.getInputStream());
+        Student std= (Student)oin.readObject();
+        std.showDetails();
     }
     public void run(){
         try{

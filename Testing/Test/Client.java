@@ -1,15 +1,21 @@
+package Testing.Test;
 import java.net.*;
 import java.io.*;
 import java.util.*;
+import stud.*;
+import stud.helpler.*;
 public class Client {
     Socket socket;
     DataInputStream in;
     DataOutputStream out;
+    ObjectOutputStream oout;
     public Client()throws Exception {
         socket = new Socket("localhost", 6666);
         in= new DataInputStream( socket.getInputStream() );
         out= new DataOutputStream( socket.getOutputStream() );
+        oout= new ObjectOutputStream( socket.getOutputStream() );
         System.out.println(socket.getLocalAddress()+":"+socket.getLocalPort()+":"+socket.getPort());
+        oout.writeObject(new Student(12345L, new Name("Avinash","Gupta"), new stud.helpler.Date(15,02,2002), "male"));
     }
     public void chat() throws Exception {
         Scanner cin = new Scanner(System.in);

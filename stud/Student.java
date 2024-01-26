@@ -33,7 +33,7 @@ public class Student implements Serializable{
         this.motherName = motherName;
         this.contact = contact;
     }
-    protected Student(long registerNo, Name studName, Date birDate ,String gender){
+    public Student(long registerNo, Name studName, Date birDate ,String gender){
         this(registerNo, studName,birDate,gender, null, null, null,"");
     }
     public long getRegisterNo(){
@@ -75,6 +75,9 @@ public class Student implements Serializable{
         }catch(Exception e){
             return false;
         }
+    }
+    public void showDetails(){
+        System.out.println(registerNo+" "+studName.getName()+" "+gender+" "+birthDate.toString());
     }
     
 }
