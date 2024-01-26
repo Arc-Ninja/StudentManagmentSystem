@@ -14,3 +14,6 @@ command<br>
 Server: <code>java Testing.Test.Server</code><br>
 Client: <code>java Testing.Test.Client</code>
 </p>
+
+<H3>Note:</h3>
+<p>Application is still in development stage</p>
