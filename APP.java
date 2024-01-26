@@ -17,7 +17,7 @@ public class APP {
     static public ActionListener eventHandler;
     public static void main(String[] args) {
 
-        eventHandler = new EventHandle(); 
+        // eventHandler = new EventHandle(); 
         frame = new JFrame("TestFrame");
         frame.setLayout(new BorderLayout());
         viewJPanel = new JPanel();
@@ -26,11 +26,12 @@ public class APP {
         
         // JPanel test = new JPanel();
         // test.setPreferredSize((new Dimension(200,200)));
-        search = new APPMenuBar();
+        
         entry = new entryPanel();
         res= new result();
-        search.searchButton.addActionListener(eventHandler);
-        search.entryButton.addActionListener(eventHandler);
+        search = new APPMenuBar(viewJPanel,entry,res);
+        // search.searchButton.addActionListener(eventHandler);
+        // search.entryButton.addActionListener(eventHandler);
         viewJPanel.add(entry);
         scrollPane = new JScrollPane(viewJPanel,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setViewportView(viewJPanel);
@@ -50,21 +51,21 @@ public class APP {
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-    static class EventHandle implements ActionListener {
-        public void actionPerformed(ActionEvent event){
-            if(event.getSource()==search.entryButton){
-                viewJPanel.remove(res);
-                viewJPanel.add(entry);
+    // static class EventHandle implements ActionListener {
+    //     public void actionPerformed(ActionEvent event){
+    //         if(event.getSource()==search.entryButton){
+    //             viewJPanel.remove(res);
+    //             viewJPanel.add(entry);
                 
     
                 
-            }
-            else if(event.getSource()==search.searchButton){
-                viewJPanel.remove(entry);
-                viewJPanel.add(res);
-            }
-            viewJPanel.setVisible(false);
-            viewJPanel.setVisible(true); 
-        }
-    }
+    //         }
+    //         else if(event.getSource()==search.searchButton){
+    //             viewJPanel.remove(entry);
+    //             viewJPanel.add(res);
+    //         }
+    //         viewJPanel.setVisible(false);
+    //         viewJPanel.setVisible(true); 
+    //     }
+    // }
 }
