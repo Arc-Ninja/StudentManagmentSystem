@@ -2,10 +2,15 @@ package stud.gui;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import stud.gui.EventHandle.*;
 public class GenderPanel extends JPanel{
     public JRadioButton male, female;
     public ButtonGroup gender;
+    public String genderData;
+    public genderPanelEvent eventLis;
     public GenderPanel(){
+        
+        genderData="";
         male = new JRadioButton("Male");
         female = new JRadioButton("Female");
         male.setBounds(20,5,100,20);
@@ -14,6 +19,9 @@ public class GenderPanel extends JPanel{
         female.setFont(new Font("serif", Font.PLAIN,16));
         male.setBackground(new Color(224,224,224));
         female.setBackground(new Color(224,224,224));
+        eventLis = new genderPanelEvent(this);
+        male.addActionListener(eventLis);
+        female.addActionListener(eventLis);
 
         gender = new ButtonGroup();
         gender.add(male);

@@ -19,7 +19,8 @@ public class entryPanelEvent implements ActionListener{
         if(event.getSource()==this.entry.submit){
             if(Integer.parseInt(this.entry.studentRresgister.TRegister.getText())!=-1
             && !this.entry.studentName.TFName.getText().equals("")
-            && (!this.entry.studentGender.male.isSelected() || !this.entry.studentGender.female.isSelected())){
+            && this.entry.studentGender.gender.getSelection()!=null){
+                System.out.println(this.entry.studentGender.genderData);
             }else{
                 System.out.println("register empty or not number");
             }
