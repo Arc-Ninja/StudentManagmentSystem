@@ -9,8 +9,8 @@ public class AddressPanel extends JPanel{
     // public JTextField TLocation,TCity,TDistrict,TState,TCountry,TZipCode;
     public JLabel LLocation;
     public JTextField TLocation;
-    JLabel[] carr;
-    JTextField[] Tarr;
+    public JLabel[] carr;
+    public JTextField[] Tarr;
     private String Larr[]={ "City","District","State", "Country", "ZipCode"};
     public AddressPanel(){
         setLayout(null);
