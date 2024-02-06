@@ -15,7 +15,8 @@ public class Student implements Serializable{
     protected Name motherName;
     protected String contact;
     protected String gender;
-    public Student(long registerNo, Name studName, Date birthDate ,String gender, Address address, Name fatherName, Name motherName, String contact){
+    protected String email;
+    public Student(long registerNo, Name studName, Date birthDate ,String gender, Address address, Name fatherName, Name motherName, String contact, String email){
         try{
             if(registerNo>-1 &&studName!=null &&gender!="" && birthDate!=null){
             this.registerNo = registerNo;
@@ -32,9 +33,10 @@ public class Student implements Serializable{
         this.fatherName = fatherName;
         this.motherName = motherName;
         this.contact = contact;
+        this.email = email;
     }
     public Student(long registerNo, Name studName, Date birDate ,String gender){
-        this(registerNo, studName,birDate,gender, null, null, null,"");
+        this(registerNo, studName,birDate,gender, null, null, null,"","");
     }
     public long getRegisterNo(){
         return this.registerNo;
@@ -60,6 +62,9 @@ public class Student implements Serializable{
     public String getContact(){
         return this.contact;
     }
+    public String getEmail(){
+        return this.email;
+    }
     public boolean setAddress(Address address){
         try{
         this.address=address;
@@ -71,6 +76,14 @@ public class Student implements Serializable{
     public boolean setContact(String contact){
         try{
             this.contact=contact;
+            return true;
+        }catch(Exception e){
+            return false;
+        }
+    }
+    public boolean setEmail(String email){
+        try{
+            this.email=email;
             return true;
         }catch(Exception e){
             return false;
