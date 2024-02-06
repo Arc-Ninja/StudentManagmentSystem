@@ -9,11 +9,11 @@ after compiling all java files run <br>
 <code>java APP</code>  <br>
 from the root folder of repo
 <br><br><br>
-To run the program in Testing/Test Folder<br>
+<!-- To run the program in Testing/Test Folder<br>
 command<br>
 Server: <code>java Testing.Test.Server</code><br>
 Client: <code>java Testing.Test.Client</code>
-</p>
+</p> -->
 
 <H3>Note:</h3>
 <p>Application is still in development stage</p>
