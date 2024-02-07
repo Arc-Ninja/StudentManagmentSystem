@@ -3,8 +3,12 @@ package Testing.Test;
 import java.net.*;
 import java.io.*;
 import java.util.*;
+
+import javax.print.attribute.standard.MediaSize.NA;
+
 import stud.*;
 import stud.helpler.*;
+import stud.helpler.Date;
 
 public class Client {
     Socket socket;
@@ -18,8 +22,11 @@ public class Client {
         out = new DataOutputStream(socket.getOutputStream());
         oout = new ObjectOutputStream(socket.getOutputStream());
         System.out.println(socket.getLocalAddress() + ":" + socket.getLocalPort() + ":" + socket.getPort());
-        oout.writeObject(
-                new Student(12345L, new Name("Avinash", "Gupta"), new stud.helpler.Date(15, 02, 2002), "male"));
+        Student std = new Student(12345L, new Name("Avinash","Kumar", "Gupta"), new stud.helpler.Date(15, 02, 2002), "male", new stud.helpler.Address("Rice", "null", "null", "null", "null", 12345),new Name("A","B","C"),new Name("D","E","F"),"1234567890","abc@gmail.com");
+        // Student std = new Student(41120025,new Name("Archi", "Shaw"),new stud.helpler.Date("13","03","2003"), "male");
+        std.showDetails();
+        std.Encrypt(2);
+        oout.writeObject(std);
     }
 
     public void chat() throws Exception {
