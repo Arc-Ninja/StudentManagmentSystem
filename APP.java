@@ -6,7 +6,7 @@ import stud.gui.result;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-
+import stud.net.*;
 public class APP {
     static public JFrame frame;
     static public JPanel viewJPanel;
@@ -23,7 +23,9 @@ public class APP {
         viewJPanel = new JPanel();
         viewJPanel.setBackground(new Color(54, 54, 54));
         viewJPanel.setLayout(new FlowLayout(FlowLayout.CENTER,10,20));
-        
+        Sender t = new Sender();
+        t.start();
+
         // JPanel test = new JPanel();
         // test.setPreferredSize((new Dimension(200,200)));
         
@@ -50,6 +52,7 @@ public class APP {
         frame.setResizable(true);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // System.exit(0);
     }
     // static class EventHandle implements ActionListener {
     //     public void actionPerformed(ActionEvent event){

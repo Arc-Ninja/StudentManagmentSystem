@@ -7,6 +7,7 @@ import java.awt.*;
 import javax.swing.*;
 import stud.*;
 import stud.exception.*;
+import stud.net.*;
 public class entryPanelEvent implements ActionListener{
     public entryPanel entry;
     public Student student;
@@ -19,7 +20,7 @@ public class entryPanelEvent implements ActionListener{
         }
         if(event.getSource()==this.entry.submit){
             try{
-                int register = Integer.parseInt(this.entry.studentRresgister.TRegister.getText());
+                Long register = Long.parseLong(this.entry.studentRresgister.TRegister.getText().toString());
                 if(register>=10000000 && register<=99999999){
                     throw new RegisterInvalid();
                 }
@@ -39,8 +40,10 @@ public class entryPanelEvent implements ActionListener{
                 int zipcode = Integer.parseInt(this.entry.studentAddress.Tarr[4].getText());
                 Address address = new Address(this.entry.studentAddress.TLocation.getText(),this.entry.studentAddress.Tarr[0].getText(),this.entry.studentAddress.Tarr[1].getText(),this.entry.studentAddress.Tarr[2].getText(),this.entry.studentAddress.Tarr[3].getText(),zipcode);
                 student = new Student(register, studentName, studDOB, gender,address, fatherName,motherName,Contact,email);
+                Sender.studentsQueue.add(student);
             }catch(NumberFormatException e){
-                System.out.println("Register should be a numerical");
+                System.out.println("Register should be a numerical\n"+e.getStackTrace());
+                // e.getStackTrace();
             }catch(RegisterInvalid e){
                 System.out.println("Register should be greater than 100"); 
             }catch(EmptyName e){
