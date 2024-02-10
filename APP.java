@@ -6,6 +6,8 @@ import stud.gui.result;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.LinkedList;
+
 import stud.net.*;
 public class APP {
     static public JFrame frame;

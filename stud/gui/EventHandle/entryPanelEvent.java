@@ -40,7 +40,10 @@ public class entryPanelEvent implements ActionListener{
                 int zipcode = Integer.parseInt(this.entry.studentAddress.Tarr[4].getText());
                 Address address = new Address(this.entry.studentAddress.TLocation.getText(),this.entry.studentAddress.Tarr[0].getText(),this.entry.studentAddress.Tarr[1].getText(),this.entry.studentAddress.Tarr[2].getText(),this.entry.studentAddress.Tarr[3].getText(),zipcode);
                 student = new Student(register, studentName, studDOB, gender,address, fatherName,motherName,Contact,email);
-                Sender.studentsQueue.add(student);
+                student.showDetails();
+                synchronized(StudentQueue.queue){
+                    StudentQueue.queue.offer(student);
+                }
             }catch(NumberFormatException e){
                 System.out.println("Register should be a numerical\n"+e.getStackTrace());
                 // e.getStackTrace();
