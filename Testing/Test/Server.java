@@ -25,7 +25,6 @@ class ClientHandler extends Thread {
         out = new DataOutputStream(this.socket.getOutputStream());
         oin = new ObjectInputStream(this.socket.getInputStream());
         Student std = (Student) oin.readObject();
-        std.Decrypt(std.data, 1);
         std.showDetails();
     }
 

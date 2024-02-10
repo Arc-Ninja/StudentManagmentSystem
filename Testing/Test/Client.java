@@ -22,10 +22,8 @@ public class Client {
         out = new DataOutputStream(socket.getOutputStream());
         oout = new ObjectOutputStream(socket.getOutputStream());
         System.out.println(socket.getLocalAddress() + ":" + socket.getLocalPort() + ":" + socket.getPort());
-        Student std = new Student(12345L, new Name("Avinash","Kumar", "Gupta"), new stud.helpler.Date(15, 02, 2002), "male", new stud.helpler.Address("Rice", "null", "null", "null", "null", 12345),new Name("A","B","C"),new Name("D","E","F"),"1234567890","abc@gmail.com");
-        // Student std = new Student(41120025,new Name("Archi", "Shaw"),new stud.helpler.Date("13","03","2003"), "male");
-        std.showDetails();
-        std.Encrypt(2);
+        // Student std = new Student(12345L, new Name("Avinash","Kumar", "Gupta"), new stud.helpler.Date(15, 02, 2002), "male", new stud.helpler.Address("Rice", "null", "null", "null", "null", 12345),new Name("A","B","C"),new Name("D","E","F"),"1234567890","abc@gmail.com");
+        Student std = new Student(41120025,new Name("Archi", "Shaw"),new stud.helpler.Date("13","03","2003"), "male");
         oout.writeObject(std);
     }
 
