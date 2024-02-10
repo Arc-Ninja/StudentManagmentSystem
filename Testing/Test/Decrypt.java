@@ -23,6 +23,8 @@ public class Decrypt {
         }
         bais = new ByteArrayInputStream(arr);
         ois = new ObjectInputStream(bais);
+        std = (Student) ois.readObject();
+        return std;
 
 
     }
