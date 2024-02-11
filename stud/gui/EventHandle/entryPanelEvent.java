@@ -57,5 +57,10 @@ public class entryPanelEvent implements ActionListener{
             }
         }
     }
+    public boolean isEmpty(String s){
+        if(s.equals(""))
+            return false;
+        return true;
+    }
 }
 
