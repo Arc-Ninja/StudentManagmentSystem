@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
+import stud.exception.*;
 public class AddressPanel extends JPanel{
     // public JLabel LLocation,LCity,LDistrict,LState,LCountry,LZipCode;
     // public JTextField TLocation,TCity,TDistrict,TState,TCountry,TZipCode;
@@ -67,5 +68,23 @@ public class AddressPanel extends JPanel{
         for(int i=0;i<5;i++){
             Tarr[i].setText("");
         }
+    }
+    public boolean isEmpty()throws Exception {
+        if(this.TLocation.getText().equals("")&&this.Tarr[0].getText().equals("")&&this.Tarr[1].getText().equals("")&&this.Tarr[2].getText().equals("")&&this.Tarr[3].getText().equals("")&&this.Tarr[4].getText().equals("")){
+            return true;
+        }else if(this.TLocation.getText().equals("")){
+            throw new AddressException("enter location");
+        }else if(this.Tarr[0].getText().equals("")){
+            throw new AddressException("enter city");
+        }else if(this.Tarr[1].getText().equals("")){
+            throw new AddressException("enter district");
+        }else if(this.Tarr[2].getText().equals("")){
+            throw new AddressException("enter state");
+        }else if(this.Tarr[3].getText().equals("")){
+            throw new AddressException("enter country");
+        }else if(this.Tarr[4].getText().equals("")){
+            throw new AddressException("enter zipcode");
+        }
+        return false;
     }
 }

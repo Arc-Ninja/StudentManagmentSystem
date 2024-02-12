@@ -32,5 +32,17 @@ public class ContactPanel extends JPanel{
         Number.setText("");
         TEmail.setText("");
     }
+    public boolean isEmpty(){
+        if(Number.getText().equals("")&&TEmail.getText().equals("")){
+            return true;
+        }
+        return false;
+    }
+    public boolean NumberisEmpty(){
+        return Number.getText().equals("");
+    }
+    public boolean EmailisEmpty(){
+        return TEmail.getText().equals("");
+    }
     
 }
