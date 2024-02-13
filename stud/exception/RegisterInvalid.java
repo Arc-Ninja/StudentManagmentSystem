@@ -1,8 +1,11 @@
 package stud.exception;
 
 public class RegisterInvalid extends Exception{
+    public RegisterInvalid(String message){
+        super(message);
+    }
     public RegisterInvalid(){
-        super("invalid register!");
+        this("Invalid register");
     }
 
     
