@@ -2,7 +2,7 @@ package stud;
 
 import java.io.Serializable;
 
-
+import stud.exception.StudentException;
 import stud.helpler.Address;
 import stud.helpler.Name;
 import stud.helpler.Date;
@@ -17,14 +17,14 @@ public class Student implements Serializable{
     protected String contact;
     protected String gender;
     protected String email;
-    public Student(long registerNo, Name studName, Date birthDate ,String gender, Address address, Name fatherName, Name motherName, String contact, String email)throws Exception {
+    public Student(long registerNo, Name studName, Date birthDate ,String gender, Address address, Name fatherName, Name motherName, String contact, String email)throws StudentException {
         if(registerNo>-1 &&studName!=null &&gender!="" && birthDate!=null){
         this.registerNo = registerNo;
         this.studName = studName;
         this.birthDate = birthDate;
         this.gender = gender;
         }else{
-            throw new Exception("resgister, name, date of birth and  should not be null");
+            throw new StudentException ("resgister, name, date of birth and  should not be null");
         }
         this.address = address;
         this.fatherName = fatherName;
@@ -32,19 +32,19 @@ public class Student implements Serializable{
         this.contact = contact;
         this.email = email;
     }
-    public Student(long registerNo, Name studName, Date birthDate, String gender,Address address,Name fatherName,Name motherName,String contact)throws Exception{
+    public Student(long registerNo, Name studName, Date birthDate, String gender,Address address,Name fatherName,Name motherName,String contact)throws StudentException {
         this(registerNo, studName, birthDate, gender,address,fatherName,motherName,contact,null);
     }
-    public Student(long registerNo, Name studName, Date birthDate, String gender,Address address,Name fatherName,Name motherName)throws Exception{
+    public Student(long registerNo, Name studName, Date birthDate, String gender,Address address,Name fatherName,Name motherName)throws StudentException {
         this(registerNo, studName, birthDate, gender,address,fatherName,motherName,null);
     }
-    public Student(long registerNo, Name studName, Date birthDate, String gender,Address address,Name fatherName)throws Exception{
+    public Student(long registerNo, Name studName, Date birthDate, String gender,Address address,Name fatherName)throws StudentException {
         this(registerNo, studName, birthDate, gender,address,fatherName,null);
     }
-    public Student(long registerNo, Name studName, Date birthDate, String gender,Address address) throws Exception{
+    public Student(long registerNo, Name studName, Date birthDate, String gender,Address address) throws StudentException {
         this(registerNo, studName, birthDate, gender,address,null);
     }
-    public Student(long registerNo, Name studName, Date birDate ,String gender)throws Exception{
+    public Student(long registerNo, Name studName, Date birDate ,String gender)throws StudentException {
         this(registerNo, studName,birDate,gender,null);
         // this.address = new Address("", "", "", "", "", 0);
         // this.fatherName = new Name("");
