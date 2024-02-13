@@ -38,10 +38,24 @@ public class NamePanel extends JPanel{
         // this.setSize(new Dimension(800,50));
     }
     public void clear(){
-        TFName.setText("");
-        TMName.setText("");
-        TLName.setText("");
+        this.TFName.setText("");
+        this.TMName.setText("");
+        this.TLName.setText("");
     }
-        
+    public boolean isEmpty(){
+        if(this.TFName.getText().equals("")&&this.TMName.getText().equals("")&&this.TLName.getText().equals("")){
+            return true;
+        }
+        return false;
+    }
+    public boolean FNameIsEmpty(){
+        return this.TFName.getText().equals("");
+    }
+    public boolean MNameIsEmpty(){
+        return this.TMName.getText().equals("");
+    }
+    public boolean TLNameIsEmpty(){
+        return this.TLName.getText().equals("");
+    }  
     
 }

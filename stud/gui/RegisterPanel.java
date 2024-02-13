@@ -25,7 +25,10 @@ public class RegisterPanel extends JPanel{
 
     }
     public void clear(){
-        TRegister.setText("");
+        this.TRegister.setText("");
+    }
+    public boolean isEmpty(){
+        return this.TRegister.getText().equals("");
     }
     
 }
