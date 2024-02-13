@@ -17,18 +17,14 @@ public class Student implements Serializable{
     protected String contact;
     protected String gender;
     protected String email;
-    public Student(long registerNo, Name studName, Date birthDate ,String gender, Address address, Name fatherName, Name motherName, String contact, String email){
-        try{
-            if(registerNo>-1 &&studName!=null &&gender!="" && birthDate!=null){
-            this.registerNo = registerNo;
-            this.studName = studName;
-            this.birthDate = birthDate;
-            this.gender = gender;
-            }else{
-                throw new Exception("resgister, name, date of birth and  should not be null");
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
+    public Student(long registerNo, Name studName, Date birthDate ,String gender, Address address, Name fatherName, Name motherName, String contact, String email)throws Exception {
+        if(registerNo>-1 &&studName!=null &&gender!="" && birthDate!=null){
+        this.registerNo = registerNo;
+        this.studName = studName;
+        this.birthDate = birthDate;
+        this.gender = gender;
+        }else{
+            throw new Exception("resgister, name, date of birth and  should not be null");
         }
         this.address = address;
         this.fatherName = fatherName;
@@ -36,14 +32,27 @@ public class Student implements Serializable{
         this.contact = contact;
         this.email = email;
     }
-    public Student(long registerNo, Name studName, Date birDate ,String gender){
-        this(registerNo, studName,birDate,gender, null, null, null,"","");
-        this.address = new Address("", "", "", "", "", 0);
-        this.fatherName = new Name("");
-        this.motherName = new Name("");
-        this.contact = "";
-        this.email = "";
+    public Student(long registerNo, Name studName, Date birthDate, String gender,Address address,Name fatherName,Name motherName,String contact)throws Exception{
+        this(registerNo, studName, birthDate, gender,address,fatherName,motherName,contact,null);
     }
+    public Student(long registerNo, Name studName, Date birthDate, String gender,Address address,Name fatherName,Name motherName)throws Exception{
+        this(registerNo, studName, birthDate, gender,address,fatherName,motherName,null);
+    }
+    public Student(long registerNo, Name studName, Date birthDate, String gender,Address address,Name fatherName)throws Exception{
+        this(registerNo, studName, birthDate, gender,address,fatherName,null);
+    }
+    public Student(long registerNo, Name studName, Date birthDate, String gender,Address address) throws Exception{
+        this(registerNo, studName, birthDate, gender,address,null);
+    }
+    public Student(long registerNo, Name studName, Date birDate ,String gender)throws Exception{
+        this(registerNo, studName,birDate,gender,null);
+        // this.address = new Address("", "", "", "", "", 0);
+        // this.fatherName = new Name("");
+        // this.motherName = new Name("");
+        // this.contact = "";
+        // this.email = "";
+    }
+
     public long getRegisterNo(){
         return this.registerNo;
     }
