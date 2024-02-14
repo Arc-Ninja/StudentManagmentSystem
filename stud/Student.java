@@ -18,15 +18,15 @@ public class Student implements Serializable{
     protected String gender;
     protected String email;
     public Student(long registerNo, Name studName, Date birthDate ,String gender, Address address, Name fatherName, Name motherName, String contact, String email)throws StudentException {
-        if(registerNo>-1 &&studName!=null &&gender!="" && birthDate!=null){
+        if(registerNo>-1 &&studName!=null &&gender!="" && birthDate!=null && address!=null){
         this.registerNo = registerNo;
         this.studName = studName;
         this.birthDate = birthDate;
         this.gender = gender;
-        }else{
-            throw new StudentException ("resgister, name, date of birth and  should not be null");
-        }
         this.address = address;
+        }else{
+            throw new StudentException ("resgister, name, date of birth and address should not be null");
+        }
         this.fatherName = fatherName;
         this.motherName = motherName;
         this.contact = contact;
@@ -45,14 +45,6 @@ public class Student implements Serializable{
     public Student(long registerNo, Name studName, Date birthDate, String gender,Address address) throws StudentException {
         this(registerNo, studName, birthDate, gender,address,new Name());
         // this.fatherName = new Name("");
-    }
-    public Student(long registerNo, Name studName, Date birDate ,String gender)throws StudentException {
-        this(registerNo, studName,birDate,gender,new Address());
-        // this.address = new Address("", "", "", "", "", 0);
-        
-        
-        // this.contact = "";
-        // this.email = "";
     }
 
     public long getRegisterNo(){

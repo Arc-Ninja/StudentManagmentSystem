@@ -102,8 +102,8 @@ public class entryPanelEvent implements ActionListener{
         Pattern pattern = Pattern.compile("[0-9]+");
         return pattern.matcher(str).matches();
     }
-    public boolean isEmpty(String s){
-        return s.equals("");
+    public Name studentName(NamePanel name) {
+        return new Name("name");
     }
 }
 
