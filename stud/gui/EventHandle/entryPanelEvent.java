@@ -39,22 +39,29 @@ public class entryPanelEvent implements ActionListener{
                     }else{
                         this.registerNo=Long.parseLong(this.entry.studentRresgister.TRegister.getText());
                     }
-                    if(this.entry.studentName.isEmpty()){
-                        throw new EmptyName("Student name is empty");
-                    }else if(this.entry.studentName.FNameIsEmpty()){
-                        throw new EmptyName("Student first name is empty");
-                    }else if(this.entry.studentName.MNameIsEmpty()&&this.entry.studentName.LNameIsEmpty()){
-                        this.studName=new Name(this.entry.studentName.TFName.getText());
-                    }else if(this.entry.studentName.MNameIsEmpty()){
-                        this.studName=new Name(this.entry.studentName.TFName.getText(), this.entry.studentName.TLName.getText());
+                    if(this.entry.studentName.FNameIsEmpty()){
+                        throw new EmptyName("first name cannot be empty");
                     }else{
-                        this.studName=new Name(this.entry.studentName.TFName.getText(), this.entry.studentName.TMName.getText(), this.entry.studentName.TLName.getText());
+                        this.studName=new Name(this.entry.studentName.TFName.getText(), this.entry.studentName.TMName.getText(),this.entry.studentName.TLName.getText());
                     }
                     if(this.entry.studentGender.isSelected()){
                         throw new EmptyGender("please select gender");
                     }else{
                         this.gender=new String(this.entry.studentGender.genderData);
                     }
+                    if(this.entry.fatherName.FNameIsEmpty()){
+                        this.fatherName=new Name();
+                    }else{
+                        this.fatherName=new Name(this.entry.fatherName.TFName.getText(), this.entry.fatherName.TMName.getText(),this.entry.fatherName.TLName.getText());
+                    }
+                    if(this.entry.motherName.FNameIsEmpty()){
+                        this.motherName=new Name();
+                    }else{
+                        this.motherName=new Name(this.entry.motherName.TFName.getText(), this.entry.motherName.TMName.getText(),this.entry.motherName.TLName.getText());
+                    }
+                    if(this.address.Tz)
+                    this.address = new Address(this.entry.studentAddress.TLocation.getText(),this.entry.studentAddress.Tarr[0].getText(),this.entry.studentAddress.Tarr[1].getText(),this.entry.studentAddress.Tarr[2].getText(),this.entry.studentAddress.Tarr[3].getText(),zipcode);
+
                 }
             }catch(Exception e){
                 System.out.println(e.getMessage());
@@ -102,8 +109,18 @@ public class entryPanelEvent implements ActionListener{
         Pattern pattern = Pattern.compile("[0-9]+");
         return pattern.matcher(str).matches();
     }
-    public Name studentName(NamePanel name) {
-        return new Name("name");
+    public void studentName(NamePanel name) throws EmptyName{
+        if(this.entry.studentName.isEmpty()){
+            throw new EmptyName("Student name is empty");
+        }else if(this.entry.studentName.FNameIsEmpty()){
+            throw new EmptyName("Student first name is empty");
+        }else if(this.entry.studentName.MNameIsEmpty()&&this.entry.studentName.LNameIsEmpty()){
+            this.studName=new Name(this.entry.studentName.TFName.getText());
+        }else if(this.entry.studentName.MNameIsEmpty()){
+            this.studName=new Name(this.entry.studentName.TFName.getText(), this.entry.studentName.TLName.getText());
+        }else{
+            this.studName=new Name(this.entry.studentName.TFName.getText(), this.entry.studentName.TMName.getText(), this.entry.studentName.TLName.getText());
+        }
     }
 }
 
