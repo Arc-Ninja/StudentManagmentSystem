@@ -126,5 +126,9 @@ public class entryPanelEvent implements ActionListener{
         Pattern pattern = Pattern.compile("([a-zA-Z]+[0-9]*)+((-|_|\\.)?([a-zA-Z]|[0-9])+)*@[a-zA-Z]+(\\.[a-zA-Z]+)+");
         return pattern.matcher(eml).matches();
     }
+    public boolean contactChecker(String num){
+        Pattern pattern = Pattern.compile("[1-9][0-9]{9}");
+        return pattern.matcher(num).matches();
+    }
 }
 
