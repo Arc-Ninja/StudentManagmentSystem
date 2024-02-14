@@ -54,7 +54,7 @@ public class NamePanel extends JPanel{
     public boolean MNameIsEmpty(){
         return this.TMName.getText().equals("");
     }
-    public boolean TLNameIsEmpty(){
+    public boolean LNameIsEmpty(){
         return this.TLName.getText().equals("");
     }  
     

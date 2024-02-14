@@ -12,6 +12,15 @@ import java.util.regex.*;;
 public class entryPanelEvent implements ActionListener{
     public entryPanel entry;
     public Student student;
+    public long  registerNo=-1;
+    public Name studName;
+    public Date birthDate;
+    public Address address;
+    public Name fatherName;
+    public Name motherName;
+    public String contact;
+    public String gender;
+    public String email;
     public entryPanelEvent(entryPanel entry) {
         this.entry = entry;
     }
@@ -27,11 +36,24 @@ public class entryPanelEvent implements ActionListener{
                 }else{
                     if(!registerChecker(this.entry.studentRresgister.TRegister.getText())){
                         throw new RegisterInvalid();
+                    }else{
+                        this.registerNo=Long.parseLong(this.entry.studentRresgister.TRegister.getText());
                     }
                     if(this.entry.studentName.isEmpty()){
                         throw new EmptyName("Student name is empty");
                     }else if(this.entry.studentName.FNameIsEmpty()){
                         throw new EmptyName("Student first name is empty");
+                    }else if(this.entry.studentName.MNameIsEmpty()&&this.entry.studentName.LNameIsEmpty()){
+                        this.studName=new Name(this.entry.studentName.TFName.getText());
+                    }else if(this.entry.studentName.MNameIsEmpty()){
+                        this.studName=new Name(this.entry.studentName.TFName.getText(), this.entry.studentName.TLName.getText());
+                    }else{
+                        this.studName=new Name(this.entry.studentName.TFName.getText(), this.entry.studentName.TMName.getText(), this.entry.studentName.TLName.getText());
+                    }
+                    if(this.entry.studentGender.isSelected()){
+                        throw new EmptyGender("please select gender");
+                    }else{
+                        this.gender=new String(this.entry.studentGender.genderData);
                     }
                 }
             }catch(Exception e){

@@ -41,5 +41,8 @@ public class GenderPanel extends JPanel{
         male.setSelected(false);
         female.setSelected(false);
     }
+    public boolean isSelected(){
+        return genderData.equals("");
+    }
     
 }
