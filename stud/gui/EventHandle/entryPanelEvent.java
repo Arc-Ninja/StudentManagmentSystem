@@ -60,7 +60,7 @@ public class entryPanelEvent implements ActionListener{
                         this.motherName=new Name(this.entry.motherName.TFName.getText(), this.entry.motherName.TMName.getText(),this.entry.motherName.TLName.getText());
                     }
                     if(this.address.Tz)
-                    this.address = new Address(this.entry.studentAddress.TLocation.getText(),this.entry.studentAddress.Tarr[0].getText(),this.entry.studentAddress.Tarr[1].getText(),this.entry.studentAddress.Tarr[2].getText(),this.entry.studentAddress.Tarr[3].getText(),zipcode);
+                    this.address = new Address(this.entry.studentAddress.TLocation.getText(),this.entry.studentAddress.Tarr[0].getText(),this.entry.studentAddress.Tarr[1].getText(),this.entry.studentAddress.Tarr[2].getText(),this.entry.studentAddress.Tarr[3].getText(),Integer.parseInt(this.entry.studentAddress.Tarr[4].getText()));
 
                 }
             }catch(Exception e){
