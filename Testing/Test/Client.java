@@ -3,6 +3,7 @@ package Testing.Test;
 import java.net.*;
 import java.io.*;
 import java.util.*;
+import Testing.Test.Encrypt;
 
 import javax.print.attribute.standard.MediaSize.NA;
 
@@ -15,16 +16,22 @@ public class Client {
     DataInputStream in;
     DataOutputStream out;
     ObjectOutputStream oout;
+    Encrypt enc;
+    Student std;
+    byte data[];
 
     public Client() throws Exception {
         socket = new Socket("localhost", 6666);
         in = new DataInputStream(socket.getInputStream());
         out = new DataOutputStream(socket.getOutputStream());
-        oout = new ObjectOutputStream(socket.getOutputStream());
+        // oout = new ObjectOutputStream(socket.getOutputStream());
         System.out.println(socket.getLocalAddress() + ":" + socket.getLocalPort() + ":" + socket.getPort());
-        // Student std = new Student(12345L, new Name("Avinash","Kumar", "Gupta"), new stud.helpler.Date(15, 02, 2002), "male", new stud.helpler.Address("Rice", "null", "null", "null", "null", 12345),new Name("A","B","C"),new Name("D","E","F"),"1234567890","abc@gmail.com");
-        Student std = new Student(41120025,new Name("Archi", "Shaw"),new stud.helpler.Date("13","03","2003"), "male");
-        oout.writeObject(std);
+        std = new Student(12345L, new Name("Avinash","Kumar", "Gupta"), new stud.helpler.Date(15, 02, 2002), "male", new stud.helpler.Address("Rice", "null", "null", "null", "null", 12345),new Name("A","B","C"),new Name("D","E","F"),"1234567890","abc@gmail.com");
+        // std = new Student(41120025,new Name("Archi", "Shaw"),new stud.helpler.Date("13","03","2003"), "male");
+        enc = new Encrypt(std, 1);
+        data = enc.run();
+        out.writeInt(data.length);
+        out.write(data);
     }
 
     public void chat() throws Exception {

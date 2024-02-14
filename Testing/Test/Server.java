@@ -4,6 +4,7 @@ import java.net.*;
 import java.io.*;
 import stud.*;
 import stud.helpler.*;
+import Testing.Test.Decrypt;
 
 class global{
     protected static int i=0;
@@ -15,6 +16,10 @@ class ClientHandler extends Thread {
     DataInputStream in;
     DataOutputStream out;
     ObjectInputStream oin;
+    int len;
+    byte data[];
+    Decrypt dec;
+    Student std;
 
     public ClientHandler(Socket socket, int i) throws Exception {
         super(String.valueOf(i));
@@ -23,8 +28,18 @@ class ClientHandler extends Thread {
         socket = null;
         in = new DataInputStream(this.socket.getInputStream());
         out = new DataOutputStream(this.socket.getOutputStream());
-        oin = new ObjectInputStream(this.socket.getInputStream());
-        Student std = (Student) oin.readObject();
+
+        len = in.readInt();
+        data = new byte[len];
+        if(len>0){
+            in.readFully(data, 0, len);
+        }
+        dec = new Decrypt(data, 1);
+        std = dec.run();
+        
+        
+        // oin = new ObjectInputStream(this.socket.getInputStream());
+        // Student std = (Student) oin.readObject();
         std.showDetails();
     }
 
