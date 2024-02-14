@@ -6,6 +6,7 @@ import stud.*;
 import stud.helpler.*;
 import Testing.Test.Decrypt;
 
+
 class global{
     protected static int i=0;
 }
@@ -21,6 +22,8 @@ class ClientHandler extends Thread {
     Decrypt dec;
     Student std;
 
+    int key;
+
     public ClientHandler(Socket socket, int i) throws Exception {
         super(String.valueOf(i));
         this.socket = socket;
@@ -28,19 +31,21 @@ class ClientHandler extends Thread {
         socket = null;
         in = new DataInputStream(this.socket.getInputStream());
         out = new DataOutputStream(this.socket.getOutputStream());
-
+        
         len = in.readInt();
         data = new byte[len];
         if(len>0){
             in.readFully(data, 0, len);
         }
-        dec = new Decrypt(data, 1);
+
+        try{
+        dec = new Decrypt(data, 123);
         std = dec.run();
-        
-        
-        // oin = new ObjectInputStream(this.socket.getInputStream());
-        // Student std = (Student) oin.readObject();
         std.showDetails();
+        }
+        catch(Exception e){
+            System.out.println("Wrong Key provided!");
+        }
     }
 
     public void run() {
