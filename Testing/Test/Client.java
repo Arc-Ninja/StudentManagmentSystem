@@ -19,16 +19,34 @@ public class Client {
     Encrypt enc;
     Student std;
     byte data[];
-
+    protected int key;
+    
+    protected int KeyGen(int k){
+        int[] keyarr = {23,67,345,98,153};
+        for(int i:keyarr){
+            if(i%2==0){
+                k+=i;
+            }
+            else{
+                k-=i;
+            }
+        }
+        return k;
+    }
     public Client() throws Exception {
         socket = new Socket("localhost", 6666);
         in = new DataInputStream(socket.getInputStream());
         out = new DataOutputStream(socket.getOutputStream());
         // oout = new ObjectOutputStream(socket.getOutputStream());
         System.out.println(socket.getLocalAddress() + ":" + socket.getLocalPort() + ":" + socket.getPort());
-        std = new Student(12345L, new Name("Avinash","Kumar", "Gupta"), new stud.helpler.Date(15, 02, 2002), "male", new stud.helpler.Address("Rice", "null", "null", "null", "null", 12345),new Name("A","B","C"),new Name("D","E","F"),"1234567890","abc@gmail.com");
-        // std = new Student(41120025,new Name("Archi", "Shaw"),new stud.helpler.Date("13","03","2003"), "male");
-        enc = new Encrypt(std, 123);
+        
+        key = in.readInt();
+        System.err.println(key);
+        key = KeyGen(key);
+        System.err.println(key);
+        // std = new Student(12345L, new Name("Avinash","Kumar", "Gupta"), new stud.helpler.Date(15, 02, 2002), "male", new stud.helpler.Address("Rice", "null", "null", "null", "null", 12345),new Name("A","B","C"),new Name("D","E","F"),"1234567890","abc@gmail.com");
+        std = new Student(41120025,new Name("Archi", "Shaw"),new stud.helpler.Date("13","03","2003"), "male");
+        enc = new Encrypt(std, key);
         data = enc.run();
         out.writeInt(data.length);
         out.write(data);

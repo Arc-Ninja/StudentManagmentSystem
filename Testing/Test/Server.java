@@ -1,10 +1,12 @@
 package Testing.Test;
 
 import java.net.*;
+import java.time.LocalDate;
 import java.io.*;
 import stud.*;
 import stud.helpler.*;
 import Testing.Test.Decrypt;
+import java.util.concurrent.*;
 
 
 class global{
@@ -21,8 +23,20 @@ class ClientHandler extends Thread {
     byte data[];
     Decrypt dec;
     Student std;
+    protected int key;
 
-    int key;
+    protected int KeyGen(int k){
+        int[] keyarr = {23,67,345,98,153};
+        for(int i:keyarr){
+            if(i%2==0){
+                k+=i;
+            }
+            else{
+                k-=i;
+            }
+        }
+        return k;
+    }
 
     public ClientHandler(Socket socket, int i) throws Exception {
         super(String.valueOf(i));
@@ -31,7 +45,11 @@ class ClientHandler extends Thread {
         socket = null;
         in = new DataInputStream(this.socket.getInputStream());
         out = new DataOutputStream(this.socket.getOutputStream());
-        
+        key = ThreadLocalRandom.current().nextInt();
+        out.writeInt(key);
+        System.err.println(key);
+        key = KeyGen(key);
+        System.err.println(key);
         len = in.readInt();
         data = new byte[len];
         if(len>0){
@@ -39,7 +57,7 @@ class ClientHandler extends Thread {
         }
 
         try{
-        dec = new Decrypt(data, 123);
+        dec = new Decrypt(data, key);
         std = dec.run();
         std.showDetails();
         }

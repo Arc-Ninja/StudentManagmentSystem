@@ -14,6 +14,9 @@ public class Name implements Serializable{
     public Name(String firstName){
         this(firstName, "", "");
     }
+    public Name(){
+        
+    }
     public String getName(){
         return this.firstName+" "+this.middleName+" "+this.lastName;
     }

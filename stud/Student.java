@@ -39,16 +39,16 @@ public class Student implements Serializable{
         this(registerNo, studName, birthDate, gender,address,fatherName,motherName,null);
     }
     public Student(long registerNo, Name studName, Date birthDate, String gender,Address address,Name fatherName)throws StudentException {
-        this(registerNo, studName, birthDate, gender,address,fatherName,null);
-        this.motherName = new Name("");
+        this(registerNo, studName, birthDate, gender,address,fatherName,new Name());
+        // this.motherName = new Name("");
     }
     public Student(long registerNo, Name studName, Date birthDate, String gender,Address address) throws StudentException {
-        this(registerNo, studName, birthDate, gender,address,null);
-        this.fatherName = new Name("");
+        this(registerNo, studName, birthDate, gender,address,new Name());
+        // this.fatherName = new Name("");
     }
     public Student(long registerNo, Name studName, Date birDate ,String gender)throws StudentException {
-        this(registerNo, studName,birDate,gender,null);
-        this.address = new Address("", "", "", "", "", 0);
+        this(registerNo, studName,birDate,gender,new Address());
+        // this.address = new Address("", "", "", "", "", 0);
         
         
         // this.contact = "";
