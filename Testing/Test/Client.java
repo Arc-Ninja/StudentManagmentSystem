@@ -45,7 +45,7 @@ public class Client {
         key = KeyGen(key);
         System.err.println(key);
         // std = new Student(12345L, new Name("Avinash","Kumar", "Gupta"), new stud.helpler.Date(15, 02, 2002), "male", new stud.helpler.Address("Rice", "null", "null", "null", "null", 12345),new Name("A","B","C"),new Name("D","E","F"),"1234567890","abc@gmail.com");
-        std = new Student(41120025,new Name("Archi", "Shaw"),new stud.helpler.Date("13","03","2003"), "male");
+        std = new Student(41120025,new Name("Archi", "Shaw"),new stud.helpler.Date("13","03","2003"), "male",new Address());
         enc = new Encrypt(std, key);
         data = enc.run();
         out.writeInt(data.length);
