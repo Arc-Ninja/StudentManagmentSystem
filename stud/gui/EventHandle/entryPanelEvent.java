@@ -122,5 +122,9 @@ public class entryPanelEvent implements ActionListener{
             this.studName=new Name(this.entry.studentName.TFName.getText(), this.entry.studentName.TMName.getText(), this.entry.studentName.TLName.getText());
         }
     }
+    public boolean emailChecker(String eml){
+        Pattern pattern = Pattern.compile("([a-zA-Z]+[0-9]*)+((-|_|\\.)?([a-zA-Z]|[0-9])+)*@[a-zA-Z]+(\\.[a-zA-Z]+)+");
+        return pattern.matcher(eml).matches();
+    }
 }
 
