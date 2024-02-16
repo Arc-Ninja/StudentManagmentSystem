@@ -6,18 +6,16 @@ import stud.*;
 
 
 public class Encrypt{
-    private Student std;
+    // private Student std;
     private byte [] arr;
-    private int key;
+    // private int key;
     private ByteArrayOutputStream baos;
     private ObjectOutputStream oos;
    
-    public Encrypt(Student stu, int k){
-        this.std = stu;
-        this.key = k;
+    public Encrypt(){
     }
 
-    public byte[] run() throws Exception{
+    public byte[] run(Student std,int key) throws Exception{
         baos = new ByteArrayOutputStream();
         oos = new ObjectOutputStream(baos);
         oos.writeObject(std);
