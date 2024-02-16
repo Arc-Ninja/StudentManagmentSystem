@@ -47,10 +47,12 @@ class ClientHandler extends Thread {
         out = new DataOutputStream(this.socket.getOutputStream());
         key = ThreadLocalRandom.current().nextInt();
         out.writeInt(key);
+        out.flush();
         System.err.println(key);
         key = KeyGen(key);
         System.err.println(key);
         len = in.readInt();
+        System.out.println(len);
         data = new byte[len];
         if(len>0){
             in.readFully(data, 0, len);
@@ -60,6 +62,7 @@ class ClientHandler extends Thread {
         dec = new Decrypt(data, key);
         std = dec.run();
         std.showDetails();
+        out.writeBoolean(true);
         }
         catch(Exception e){
             System.out.println("Wrong Key provided!");

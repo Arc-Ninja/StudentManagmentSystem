@@ -23,7 +23,7 @@ public class Sender extends Thread{
                             client = new Client();
                         }
                     } catch (Exception e){
-                        System.out.println(e.getMessage());
+                        System.out.println(e.getMessage()+" create connection failed");
                     }
                     while(!StudentQueue.getQueue().isEmpty() || student!=null){
                         if(Objects.isNull(student)){
@@ -32,7 +32,12 @@ public class Sender extends Thread{
                         student.showDetails();
                         try{
                             // client.enc.run(student,client.key);
-                            client.out.write(client.enc.run(student,client.key));
+                            byte[] data =client.enc.run(student,client.key);
+                            client.out.flush();
+
+                            int len = data.length;
+                            client.out.writeInt(len);
+                            client.out.write(data);
                             if(client.in.readBoolean()){
                                 student=null;
                             }

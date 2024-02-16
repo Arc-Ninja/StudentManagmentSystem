@@ -36,7 +36,7 @@ public class Client {
         socket = new Socket("localhost", 6666);
         in = new DataInputStream(socket.getInputStream());
         out = new DataOutputStream(socket.getOutputStream());
-        oout = new ObjectOutputStream(socket.getOutputStream());
+        // oout = new ObjectOutputStream(socket.getOutputStream());
         System.out.println(socket.getLocalAddress() + ":" + socket.getLocalPort() + ":" + socket.getPort());
         
         key = in.readInt();
