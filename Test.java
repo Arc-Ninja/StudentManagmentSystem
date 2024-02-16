@@ -68,14 +68,6 @@ public class Test {
 
     Student test = (Student) ois.readObject();
     test.showDetails();
-
-
-
-
-
-
-
-
     }
 
 
