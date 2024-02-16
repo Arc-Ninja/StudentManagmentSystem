@@ -28,7 +28,7 @@ public class Address implements Serializable{
     }
     public String getAddress(){
         try{
-            return (loacation + city + distric +state + country + zipcode);
+            return (loacation +" "+ city +" "+  distric + " "+ state +" "+ country +" "+ zipcode);
         }catch(Exception e){
             System.out.println(e.getMessage());
             return "";

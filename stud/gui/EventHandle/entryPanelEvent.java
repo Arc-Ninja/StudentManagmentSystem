@@ -86,11 +86,12 @@ public class entryPanelEvent implements ActionListener{
                         StudentQueue.queue.offer(student);
                     }
                     this.entry.clear();
+
                 }
             }catch(RegisterInvalid invalidRegister){
                 System.out.println(invalidRegister.getMessage());
             }catch(NumberFormatException e){
-                System.out.println(e.getMessage());
+                System.out.println(e.getMessage() + " Zipcode was not numeric");
             }catch(EmptyName e){
                 System.out.println(e.getMessage());
             }catch(EmptyGender e){
@@ -99,6 +100,9 @@ public class entryPanelEvent implements ActionListener{
                 System.out.println(e.getMessage());
             }catch(Exception e){
                 System.out.println(e.getMessage());
+            }
+            finally{
+                clean();
             }
 
             // try{
@@ -163,6 +167,19 @@ public class entryPanelEvent implements ActionListener{
     public boolean contactChecker(String num){
         Pattern pattern = Pattern.compile("[1-9][0-9]{9}");
         return pattern.matcher(num).matches();
+    }
+    public void clean(){
+    this.student=null;
+    this.registerNo=-1;
+    this.studName=null;
+    this.birthDate=null;
+    this.address=null;
+    this.fatherName=null;
+    this.motherName=null;
+    this.contact=null;
+    this.gender=null;
+    this.email=null;
+    System.err.println("All data Cleaned!");
     }
 }
 
