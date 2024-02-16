@@ -65,7 +65,33 @@ public class entryPanelEvent implements ActionListener{
                     else{
                     this.address = new Address(this.entry.studentAddress.TLocation.getText(),this.entry.studentAddress.Tarr[0].getText(),this.entry.studentAddress.Tarr[1].getText(),this.entry.studentAddress.Tarr[2].getText(),this.entry.studentAddress.Tarr[3].getText(),Integer.parseInt(this.entry.studentAddress.Tarr[4].getText()));
                     }
+                    if(!this.entry.studentContact.EmailisEmpty()){
+                        if(emailChecker(this.entry.studentContact.TEmail.getText())){
+                            this.email = this.entry.studentContact.TEmail.getText();
+                        }else{
+                            throw new InvalidEmail("email format is not valid");
+                        }
+                    }
+                    if(!this.entry.studentContact.NumberisEmpty()){
+                        if(contactChecker(this.entry.studentContact.Number.getText())){
+                            this.contact = this.entry.studentContact.Number.getText();
+                        }else{
+                            throw new InvalidContact("phone number format is not valid");
+                        }
+                    }
+                    this.birthDate = new stud.helpler.Date(this.entry.studentDateofBirth.dayBox.getSelectedItem().toString(), this.entry.studentDateofBirth.monthBox.getSelectedItem().toString(),this.entry.studentDateofBirth.yearBox.getSelectedItem().toString());
+                    this.student = new Student(this.registerNo,this.studName,this.birthDate,this.gender,this.address,this.fatherName,this.motherName,this.contact,this.email);
                 }
+            }catch(RegisterInvalid invalidRegister){
+                System.out.println(invalidRegister.getMessage());
+            }catch(NumberFormatException e){
+                System.out.println(e.getMessage());
+            }catch(EmptyName e){
+                System.out.println(e.getMessage());
+            }catch(EmptyGender e){
+                System.out.println(e.getMessage());
+            }catch(AddressException e){
+                System.out.println(e.getMessage());
             }catch(Exception e){
                 System.out.println(e.getMessage());
             }
