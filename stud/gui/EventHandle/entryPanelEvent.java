@@ -82,9 +82,9 @@ public class entryPanelEvent implements ActionListener{
                     this.birthDate = new stud.helpler.Date(this.entry.studentDateofBirth.dayBox.getSelectedItem().toString(), this.entry.studentDateofBirth.monthBox.getSelectedItem().toString(),this.entry.studentDateofBirth.yearBox.getSelectedItem().toString());
                     this.student = new Student(this.registerNo,this.studName,this.birthDate,this.gender,this.address,this.fatherName,this.motherName,this.contact,this.email);
                     student.showDetails();
-                    synchronized(StudentQueue.queue){
-                        StudentQueue.queue.offer(student);
-                    }
+                    // synchronized(StudentQueue.queue){
+                        StudentQueue.getQueue().offer(student);
+                    // }
                     this.entry.clear();
 
                 }
