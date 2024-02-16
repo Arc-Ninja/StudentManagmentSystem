@@ -85,6 +85,7 @@ public class entryPanelEvent implements ActionListener{
                     synchronized(StudentQueue.queue){
                         StudentQueue.queue.offer(student);
                     }
+                    this.entry.clear();
                 }
             }catch(RegisterInvalid invalidRegister){
                 System.out.println(invalidRegister.getMessage());
