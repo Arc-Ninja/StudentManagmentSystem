@@ -1,4 +1,4 @@
-package Testing.Test;
+package server;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
 

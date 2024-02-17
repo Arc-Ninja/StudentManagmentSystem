@@ -1,4 +1,4 @@
-package Testing.Test;
+package server;
 import java.io.*;
 
 import stud.*;
