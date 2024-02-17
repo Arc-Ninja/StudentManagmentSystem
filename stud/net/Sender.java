@@ -35,8 +35,8 @@ public class Sender extends Thread{
                             byte[] data =client.enc.run(student,client.key);
                             client.out.flush();
 
-                            int len = data.length;
-                            client.out.writeInt(len);
+                            // int len = data.length;
+                            client.out.writeInt(data.length);
                             client.out.write(data);
                             if(client.in.readBoolean()){
                                 student=null;
