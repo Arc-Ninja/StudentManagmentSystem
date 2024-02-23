@@ -27,6 +27,7 @@ public class entryPanelEvent implements ActionListener{
     public void actionPerformed(ActionEvent event) {
         if(event.getSource()==this.entry.clear){
             entry.clear();
+            this.clean();
         }
         if(event.getSource()==this.entry.submit){
 

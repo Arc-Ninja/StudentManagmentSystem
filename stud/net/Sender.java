@@ -12,25 +12,26 @@ public class Sender extends Thread{
     private Client client;
     private Student student;
     public void run() {
+        try{
         while(true){
             // System.out.println("client");
             // synchronized(StudentQueue.queue){
                 if(!StudentQueue.getQueue().isEmpty() || student!=null){
                     System.out.println("connect");
                     //create connection
-                    try {
+                    // try {
                         if(Objects.isNull(client)){
                             client = new Client();
                         }
-                    } catch (Exception e){
-                        System.out.println(e.getMessage()+" create connection failed");
-                    }
-                    while(!StudentQueue.getQueue().isEmpty() || student!=null){
+                    // } catch (Exception e){
+                    //     System.out.println(e.getMessage()+" create connection failed");
+                    // }
+                    // while(!StudentQueue.getQueue().isEmpty() || student!=null){
                         if(Objects.isNull(student)){
                             student = StudentQueue.getQueue().poll();
                         }
                         student.showDetails();
-                        try{
+                        // try{
                             // client.enc.run(student,client.key);
                             byte[] data =client.enc.run(student,client.key);
                             client.out.flush();
@@ -41,15 +42,17 @@ public class Sender extends Thread{
                             if(client.in.readBoolean()){
                                 student=null;
                             }
-                        }catch (Exception e){
-                            System.out.println(e.getMessage());
-                        }
-                        //ee
+                        // }catch (Exception e){
+                        //     System.out.println(e.getMessage());
+                        // }
+                        // //ee
                     }
 
                 }
-            // }
-        }
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
+        // }
     }
     
 }
