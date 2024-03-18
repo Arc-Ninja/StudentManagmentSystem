@@ -2,8 +2,8 @@
 public class main1{
     public static void main(String[] args) {
         int R;
-        System.out.print("enter row of floyd's triangle: ");
         if(args.length==0){
+            System.out.print("enter row of floyd's triangle: ");
             java.util.Scanner in = new java.util.Scanner(System.in);
             R = in.nextInt();
         }else{

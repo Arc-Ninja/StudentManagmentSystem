@@ -1,6 +1,6 @@
 // package Java_Programs2;
 
-public class main2 {
+public class main5{
     public static void main(String[] args) {
         int R;
         if(args.length==0){
@@ -10,19 +10,19 @@ public class main2 {
         }else{
             R=Integer.parseInt(args[0]);
         }
-        for(int i=1;i<R;i++){
-            for(int col=1;col<=i;col++){
-                if(col==1||col==i){
-                    System.out.print(col);
+        System.out.println("M"+"F".repeat(R-2)+"M");
+        for(int i=2;i<R;i++){
+            for(int j=1;j<=R;j++){
+                if(j==1||j==R){
+                    System.out.print("F");
+                }else if(j==i||j==R-i+1){
+                    System.out.print("M");
                 }else{
-                    System.out.print(" ");
+                    System.out.print("C");
                 }
             }
             System.out.println();
         }
-        for(int i=1;i<=R;i++){
-            System.out.print(i);
-        }
-        System.out.println();
+        System.out.println("M"+"F".repeat(R-2)+"M");
     }
 }

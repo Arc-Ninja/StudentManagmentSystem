@@ -2,9 +2,9 @@
 
 public class main3 {
     public static void main(String[] args) {
-        System.out.print("enter row of half hollow pyramid: ");
         int R;
         if(args.length==0){
+            System.out.print("enter row of half hollow pyramid: ");
             java.util.Scanner in = new java.util.Scanner(System.in);
             R=in.nextInt();
         }else{
