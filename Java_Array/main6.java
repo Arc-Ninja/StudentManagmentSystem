@@ -1,9 +1,9 @@
-package Java_Array;
+// package Java_Array;
 import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-public class main6_arc {
+public class main6 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n;
