@@ -19,7 +19,10 @@ public class main9 {
         }
         int _size=(size%2==0)?size:size-1;
         for(int i=0;i<_size;i+=2){
-            System.out.print(arr[i+1]+" "+arr[i]+" ");
+            arr[i]=arr[i]^arr[i+1];
+            arr[i+1]=arr[i]^arr[i+1];
+            arr[i]=arr[i]^arr[i+1];
+            System.out.print(arr[i]+" "+arr[i+1]+" ");
         }
         if(size%2==1){
             System.out.println(arr[size-1]);
