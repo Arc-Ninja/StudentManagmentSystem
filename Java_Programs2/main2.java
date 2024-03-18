@@ -7,6 +7,7 @@ public class main2 {
             System.out.print("enter row of half hollow pyramid: ");
             java.util.Scanner in = new java.util.Scanner(System.in);
             R=in.nextInt();
+            in.close();
         }else{
             R=Integer.parseInt(args[0]);
         }
