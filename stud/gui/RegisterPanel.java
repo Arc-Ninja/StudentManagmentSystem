@@ -24,5 +24,11 @@ public class RegisterPanel extends JPanel{
         // this.setSize(new Dimension(400,30));
 
     }
+    public void clear(){
+        this.TRegister.setText("");
+    }
+    public boolean isEmpty(){
+        return this.TRegister.getText().equals("");
+    }
     
 }

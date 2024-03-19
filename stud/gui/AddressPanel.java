@@ -4,14 +4,19 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
+import stud.exception.*;
 public class AddressPanel extends JPanel{
-    public JLabel LLocation,LCity,LDistrict,LState,LCountry,LZipCode;
-    public JTextField TLocation,TCity,TDistrict,TState,TCountry,TZipCode;
+    // public JLabel LLocation,LCity,LDistrict,LState,LCountry,LZipCode;
+    // public JTextField TLocation,TCity,TDistrict,TState,TCountry,TZipCode;
+    public JLabel LLocation;
+    public JTextField TLocation;
+    public JLabel[] carr;
+    public JTextField[] Tarr;
     private String Larr[]={ "City","District","State", "Country", "ZipCode"};
     public AddressPanel(){
         setLayout(null);
-        JComponent[] carr={LCity,LDistrict,LState,LCountry,LZipCode};
-        JComponent[] Tarr={TCity,TDistrict,TState,TCountry,TZipCode};
+        carr=new JLabel[5];
+        Tarr=new JTextField[5];
         for(int i=0;i<5;i++) {
             carr[i]=new JLabel(Larr[i]);
         }
@@ -57,5 +62,29 @@ public class AddressPanel extends JPanel{
         this.setVisible(true);
         // this.setSize(new Dimension(800,140));
         
+    }
+    public void clear(){
+        TLocation.setText("");
+        for(int i=0;i<5;i++){
+            Tarr[i].setText("");
+        }
+    }
+    public boolean isEmpty()throws Exception {
+        if(this.TLocation.getText().equals("")&&this.Tarr[0].getText().equals("")&&this.Tarr[1].getText().equals("")&&this.Tarr[2].getText().equals("")&&this.Tarr[3].getText().equals("")&&this.Tarr[4].getText().equals("")){
+            return true;
+        }else if(this.TLocation.getText().equals("")){
+            throw new AddressException("enter location");
+        }else if(this.Tarr[0].getText().equals("")){
+            throw new AddressException("enter city");
+        }else if(this.Tarr[1].getText().equals("")){
+            throw new AddressException("enter district");
+        }else if(this.Tarr[2].getText().equals("")){
+            throw new AddressException("enter state");
+        }else if(this.Tarr[3].getText().equals("")){
+            throw new AddressException("enter country");
+        }else if(this.Tarr[4].getText().equals("")){
+            throw new AddressException("enter zipcode");
+        }
+        return false;
     }
 }

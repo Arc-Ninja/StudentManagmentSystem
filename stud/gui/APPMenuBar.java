@@ -2,15 +2,18 @@ package stud.gui;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import stud.gui.EventHandle.*;
 
 
 public class APPMenuBar extends JMenuBar{
     public JTextField searchField;
-    public JButton searchButton;
+    public JButton searchButton,entryButton;
     public JComboBox searchBy;
     private JLabel searchLabel;
     public String selected;
-    public APPMenuBar() {
+    public APPMenuBarEvent eventLis;
+    public APPMenuBar(JPanel viJPanel, entryPanel entry,result resJPanel) {
+        eventLis = new APPMenuBarEvent(this,viJPanel,entry,resJPanel);
 
         String[] searchByItem={"Reagister","Name"};
         searchField = new JTextField("Search",30);
@@ -21,25 +24,31 @@ public class APPMenuBar extends JMenuBar{
         searchBy.setSize(50,50);
         searchField.setSize(50,50);
         searchButton.setSize(50,50);
-        ItemListener serchBylistener = new ItemListener(){
-            public void itemStateChanged(ItemEvent event){
-                if(event.getSource() == searchBy){
-                    // selected = searchBy.getSelectedItem().toString();
-                    searchField.setText(searchBy.getSelectedItem().toString());
-                }
-            }
-        };
-        searchBy.addItemListener(serchBylistener);
-        ActionListener buttonListener = new ActionListener() {
-            public void actionPerformed(ActionEvent event){
-                if(event.getSource()==searchButton){
-                    searchField.setText("");
-                }
-            }
-        };
-        searchButton.addActionListener(buttonListener);
+        entryButton = new JButton("entry");
+        entryButton.setSize(50,50);
+        // ItemListener serchBylistener = new ItemListener(){
+        //     public void itemStateChanged(ItemEvent event){
+        //         if(event.getSource() == searchBy){
+        //             // selected = searchBy.getSelectedItem().toString();
+        //             searchField.setText(searchBy.getSelectedItem().toString());
+        //         }
+        //     }
+        // };
+        // searchBy.addItemListener(serchBylistener);
+        // ActionListener buttonListener = new ActionListener() {
+        //     public void actionPerformed(ActionEvent event){
+        //         if(event.getSource()==searchButton){
+        //             searchField.setText("");
+        //         }
+        //     }
+        // };
+        searchBy.addItemListener(eventLis);
+        entryButton.addActionListener(eventLis);
+        searchButton.addActionListener(eventLis);
+        searchField.addMouseListener(eventLis);
         setLayout(new FlowLayout(FlowLayout.LEFT));
         try{
+            add(entryButton);
         add(searchLabel);
         add(searchBy);
         add(searchField);
@@ -49,7 +58,7 @@ public class APPMenuBar extends JMenuBar{
         }
         setSize(400,50);
         setVisible(true);
-        setBackground(Color.RED);
+        // setBackground(Color.RED);
 
 
     }

@@ -6,55 +6,71 @@ import stud.gui.result;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.LinkedList;
 
+import stud.net.*;
 public class APP {
     static public JFrame frame;
-    static public JButton button;
     static public JPanel viewJPanel;
     static public APPMenuBar search;
     static public entryPanel entry;
     static public result res;
+    static public JScrollPane scrollPane;
     static public ActionListener eventHandler;
     public static void main(String[] args) {
-        eventHandler = new EventHandle(); 
-        button = new JButton("Button");
+
+        // eventHandler = new EventHandle(); 
         frame = new JFrame("TestFrame");
         frame.setLayout(new BorderLayout());
         viewJPanel = new JPanel();
         viewJPanel.setBackground(new Color(54, 54, 54));
         viewJPanel.setLayout(new FlowLayout(FlowLayout.CENTER,10,20));
-        search = new APPMenuBar();
+        Sender t = new Sender();
+        t.start();
+
+        // JPanel test = new JPanel();
+        // test.setPreferredSize((new Dimension(200,200)));
+        
         entry = new entryPanel();
         res= new result();
-        search.add(button);
-        search.searchButton.addActionListener(eventHandler);
-        button.addActionListener(eventHandler);
-        // entry.setSize(500,400);
-        // viewJPanel.add(res);
-        // viewJPanel.add(entry);
+        search = new APPMenuBar(viewJPanel,entry,res);
+        // search.searchButton.addActionListener(eventHandler);
+        // search.entryButton.addActionListener(eventHandler);
+        viewJPanel.add(entry);
+        scrollPane = new JScrollPane(viewJPanel,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setViewportView(viewJPanel);
+        scrollPane.setPreferredSize(new Dimension(900,700));
+        JScrollBar vscroll = scrollPane.getVerticalScrollBar();
+        vscroll.setUnitIncrement(7);
+        vscroll.setBlockIncrement(150);
+        vscroll = scrollPane.getHorizontalScrollBar();
+        vscroll.setUnitIncrement(7);
+        vscroll.setBlockIncrement(150);
+        
         frame.add(search, BorderLayout.NORTH);
-        frame.add(viewJPanel, BorderLayout.CENTER);
-        // entry.setVisible(true);
-        frame.setSize(1000,1000);
+        frame.add(scrollPane, BorderLayout.CENTER);
+        // frame.add(test,BorderLayout.EAST);
+        frame.setSize(1080,720);
         frame.setResizable(true);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // System.exit(0);
     }
-    static class EventHandle implements ActionListener {
-        public void actionPerformed(ActionEvent event){
-            if(event.getSource()==button){
-                viewJPanel.remove(res);
-                viewJPanel.add(entry);
+    // static class EventHandle implements ActionListener {
+    //     public void actionPerformed(ActionEvent event){
+    //         if(event.getSource()==search.entryButton){
+    //             viewJPanel.remove(res);
+    //             viewJPanel.add(entry);
                 
     
                 
-            }
-            else if(event.getSource()==search.searchButton){
-                viewJPanel.remove(entry);
-                viewJPanel.add(res);
-            }
-            viewJPanel.setVisible(false);
-            viewJPanel.setVisible(true); 
-        }
-    }
+    //         }
+    //         else if(event.getSource()==search.searchButton){
+    //             viewJPanel.remove(entry);
+    //             viewJPanel.add(res);
+    //         }
+    //         viewJPanel.setVisible(false);
+    //         viewJPanel.setVisible(true); 
+    //     }
+    // }
 }

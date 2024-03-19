@@ -1,6 +1,7 @@
 
 package stud.helpler;
-public class Address {
+import java.io.Serializable;
+public class Address implements Serializable{
     protected String loacation;
     protected String city;
     protected String distric;
@@ -23,9 +24,11 @@ public class Address {
             System.out.println(e.getMessage());
         }
     }
+    public Address(){
+    }
     public String getAddress(){
         try{
-            return (loacation + city + distric +state + country + String.valueOf(zipcode));
+            return (loacation +" "+ city +" "+  distric + " "+ state +" "+ country +" "+ zipcode);
         }catch(Exception e){
             System.out.println(e.getMessage());
             return "";

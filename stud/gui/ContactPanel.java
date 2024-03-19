@@ -28,5 +28,21 @@ public class ContactPanel extends JPanel{
         // this.setSize(new Dimension(800,60));
         setVisible(true);
     }
+    public void clear(){
+        Number.setText("");
+        TEmail.setText("");
+    }
+    public boolean isEmpty(){
+        if(Number.getText().equals("")&&TEmail.getText().equals("")){
+            return true;
+        }
+        return false;
+    }
+    public boolean NumberisEmpty(){
+        return Number.getText().equals("");
+    }
+    public boolean EmailisEmpty(){
+        return TEmail.getText().equals("");
+    }
     
 }

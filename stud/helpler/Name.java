@@ -1,7 +1,7 @@
 
 package stud.helpler;
-
-public class Name {
+import java.io.Serializable;
+public class Name implements Serializable{
     private String firstName, middleName, lastName;
     public Name(String firstName, String middleName, String lastName) {
         this.firstName = firstName;
@@ -13,6 +13,9 @@ public class Name {
     }
     public Name(String firstName){
         this(firstName, "", "");
+    }
+    public Name(){
+        
     }
     public String getName(){
         return this.firstName+" "+this.middleName+" "+this.lastName;
