@@ -45,6 +45,7 @@ class ClientHandler extends Thread {
         in = new DataInputStream(this.socket.getInputStream());
         out = new DataOutputStream(this.socket.getOutputStream());
         key = ThreadLocalRandom.current().nextInt();
+        System.out.println("connected");
         out.writeInt(key);
         out.flush();
         System.err.println(key);
