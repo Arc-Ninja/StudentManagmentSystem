@@ -42,6 +42,10 @@ public class Sender extends Thread{
                             if(client.in.readBoolean()){
                                 student=null;
                             }
+                            if(StudentQueue.getQueue().isEmpty() && student==null){
+                                client.socket.close();
+                                client=null;
+                            }
                         // }catch (Exception e){
                         //     System.out.println(e.getMessage());
                         // }
