@@ -91,16 +91,16 @@ public class login extends JPanel{
 
     }
 
-    public static void main(String[] args) {
-        JFrame f  = new JFrame("Login");
-        login lg = new login();
-        f.add(lg);
+    // public static void main(String[] args) {
+    //     JFrame f  = new JFrame("Login");
+    //     login lg = new login();
+    //     f.add(lg);
         
-        // f.setBackground(new Color(66, 135, 245));
-        f.setResizable(false);
-        f.setSize(600,800);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setVisible(true);
-        f.setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
-    }
+    //     // f.setBackground(new Color(66, 135, 245));
+    //     f.setResizable(false);
+    //     f.setSize(600,800);
+    //     f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    //     f.setVisible(true);
+    //     f.setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
+    // }
 }
