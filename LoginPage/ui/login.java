@@ -32,11 +32,11 @@ public class login extends JPanel{
         signin = new JLabel("Already have an account?");
         username = new JTextField();
         password = new JPasswordField();
-        username.setBounds(150,30,200,30);
-        password.setBounds(150,90,200,30);
-        signin.setBounds(100,200,250,30);
-        user.setBounds(20,30,150,30);
-        pass.setBounds(20,90,150,30);
+        username.setBounds(180,30,200,30);
+        password.setBounds(180,90,200,30);
+        signin.setBounds(130,200,250,30);
+        user.setBounds(50,30,150,30);
+        pass.setBounds(50,90,150,30);
         signin.setFont(new Font("Georgia", Font.PLAIN, 18));
         user.setFont(new Font("Georgia", Font.PLAIN, 20));
         pass.setFont(new Font("Georgia", Font.PLAIN, 20));
@@ -44,8 +44,8 @@ public class login extends JPanel{
 
         login_butt = new JButton("Log In");
         signin_butt = new JButton("Sign In");
-        login_butt.setBounds(150,150,100,35);
-        signin_butt.setBounds(150,250,100,35);
+        login_butt.setBounds(180,150,100,35);
+        signin_butt.setBounds(180,245,100,35);
         login_butt.setFont(new Font("Georgia", Font.PLAIN, 15));
         signin_butt.setFont(new Font("Georgia", Font.PLAIN, 15));
 
