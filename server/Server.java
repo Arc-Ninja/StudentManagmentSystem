@@ -6,10 +6,12 @@ import java.io.*;
 import stud.*;
 import stud.helpler.*;
 import java.util.concurrent.*;
+import java.util.Vector;
 
 
 class global{
     protected static int i=0;
+    protected static Vector<Thread> threads = new Vector<Thread>(10);
 }
 
 
@@ -63,6 +65,8 @@ class ClientHandler extends Thread {
         std = dec.run();
         std.showDetails();
         out.writeBoolean(true);
+        global.threads.remove(this);
+        global.i--;
         }
         catch(Exception e){
             System.out.println("Wrong Key provided!");
@@ -101,18 +105,17 @@ public class Server {
 
     public static void main(String[] arg) throws Exception {
         // global numth = new global();
-        Thread[] threads = new Thread[10];
         Server server = new Server();
         while (true) {
             
-            if (global.i <= 10) {
+            // if (global.i <= 10) {
                 Socket socket = server.socket.accept();
-                threads[global.i] = new ClientHandler(socket, 100 + global.i);
+                global.threads.add(new ClientHandler(socket, 100 + global.i));
                 // threads[i].
-                threads[global.i].start();
+                global.threads.lastElement().start();
                 socket = null;
                 global.i++;
-            }
+            // }
             
 
 
