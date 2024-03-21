@@ -4,8 +4,6 @@ import java.net.*;
 import java.io.*;
 import java.util.*;
 
-import javax.print.attribute.standard.MediaSize.NA;
-
 import stud.*;
 import stud.helpler.*;
 import stud.helpler.Date;
@@ -33,14 +31,12 @@ public class Client {
         return k;
     }
     public Client() throws Exception {
-        socket = new Socket("0.tcp.in.ngrok.io", 18077);
+        socket = new Socket("localhost", 6666);
         in = new DataInputStream(socket.getInputStream());
         out = new DataOutputStream(socket.getOutputStream());
         // oout = new ObjectOutputStream(socket.getOutputStream());
         System.out.println(socket.getLocalAddress() + ":" + socket.getLocalPort() + ":" + socket.getPort());
-        int test = 1;
-        while(test!=0){test = in.readInt();
-        System.out.println("this is tst: "+test);}
+        
         key = in.readInt();
         System.err.println(key);
         key = KeyGen(key);
@@ -70,10 +66,10 @@ public class Client {
 
     }
 
-    public static void main(String[] args) throws Exception {
-        Client client = new Client();
-        client.chat();
-        client.socket.close();
-    }
+    // public static void main(String[] args) throws Exception {
+    //     Client client = new Client();
+    //     client.chat();
+    //     client.socket.close();
+    // }
 
 }
