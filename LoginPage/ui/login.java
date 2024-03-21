@@ -29,9 +29,9 @@ public class login extends JPanel{
 
         user = new JLabel("Username: ");
         pass = new JLabel("Password: ");
-        signin = new JLabel("Already have an account?");
+        signin = new JLabel("Don't have an account?");
 
-        signin.setBounds(130,200,250,30);
+        signin.setBounds(135,200,250,30);
         user.setBounds(50,30,150,30);
         pass.setBounds(50,90,150,30);
 
@@ -57,7 +57,7 @@ public class login extends JPanel{
 
 
         login_butt = new JButton("Log In");
-        signin_butt = new JButton("Sign In");
+        signin_butt = new JButton("Sign Up");
 
         login_butt.setFocusPainted(false);
         signin_butt.setFocusPainted(false);
