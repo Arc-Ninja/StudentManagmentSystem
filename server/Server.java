@@ -7,6 +7,8 @@ import stud.*;
 import stud.helpler.*;
 import java.util.concurrent.*;
 import java.util.Vector;
+import java.util.*;
+import java.lang.*;
 
 
 class global{
@@ -100,12 +102,16 @@ public class Server {
     public ServerSocket socket;
 
     public Server() throws Exception {
+
+        Process ngrok =  new ProcessBuilder("ngrok","tcp","6666").start();
+
         socket = new ServerSocket(6666);
     }
 
     public static void main(String[] arg) throws Exception {
         // global numth = new global();
         Server server = new Server();
+
         while (true) {
             
             // if (global.i <= 10) {
