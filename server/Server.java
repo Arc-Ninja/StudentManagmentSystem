@@ -100,10 +100,11 @@ class ClientHandler extends Thread {
 
 public class Server {
     public ServerSocket socket;
+    protected Process ngrok=null;
 
     public Server() throws Exception {
 
-        Process ngrok =  new ProcessBuilder("ngrok","tcp","6666").start();
+        ngrok =  new ProcessBuilder("ngrok","tcp","6666").start();
 
         socket = new ServerSocket(6666);
     }
@@ -111,17 +112,21 @@ public class Server {
     public static void main(String[] arg) throws Exception {
         // global numth = new global();
         Server server = new Server();
-
-        while (true) {
-            
-            // if (global.i <= 10) {
-                Socket socket = server.socket.accept();
-                global.threads.add(new ClientHandler(socket, 100 + global.i));
-                // threads[i].
-                global.threads.lastElement().start();
-                socket = null;
-                global.i++;
-            // }
+        try{
+            while (true) {
+                
+                // if (global.i <= 10) {
+                    Socket socket = server.socket.accept();
+                    global.threads.add(new ClientHandler(socket, 100 + global.i));
+                    // threads[i].
+                    global.threads.lastElement().start();
+                    socket = null;
+                    global.i++;
+                // }
+            }
+        }catch(Exception e){
+            server.ngrok.destroy();
+        }
             
 
 
