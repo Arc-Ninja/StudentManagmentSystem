@@ -26,10 +26,7 @@ public class signin extends JPanel {
         help.create(pf, 2);
         help.createLabel(lab, labels, 7);
 
-
-       
-
-
+        
 
     }
     
