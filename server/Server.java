@@ -112,27 +112,37 @@ public class Server {
     public static void main(String[] arg) throws Exception {
         // global numth = new global();
         Server server = new Server();
-        try{
-            while (true) {
-                
-                // if (global.i <= 10) {
-                    Socket socket = server.socket.accept();
-                    global.threads.add(new ClientHandler(socket, 100 + global.i));
-                    // threads[i].
-                    global.threads.lastElement().start();
-                    socket = null;
-                    global.i++;
-                // }
-            }
-        }catch(Exception e){
-            server.ngrok.destroy();
-        }
+        Thread t= new Stop(server);
+        t.start();
+
+        while (true) {
             
-
-
-
+            // if (global.i <= 10) {
+                Socket socket = server.socket.accept();
+                global.threads.add(new ClientHandler(socket, 100 + global.i));
+                // threads[i].
+                global.threads.lastElement().start();
+                socket = null;
+                global.i++;
+            // }
         }
-
     }
 
+}
+
+class Stop extends Thread{
+    private Server server;
+    public Stop(Server server){
+        this.server= server;
+    }
+    public void run(){
+        java.util.Scanner in = new java.util.Scanner(System.in);
+        while(true){
+            String line = in.nextLine();
+            if(line.equals("stop")|| line.equals("exit")|| line.equals("destroy")||line.equals("0")){
+                server.ngrok.destroy();
+                System.exit(0);
+            }
+        }
+    }
 }
