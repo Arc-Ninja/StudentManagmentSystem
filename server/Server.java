@@ -104,7 +104,7 @@ public class Server {
 
     public Server() throws Exception {
 
-        ngrok =  new ProcessBuilder("ngrok","tcp","6666").start();
+        // ngrok =  new ProcessBuilder("ngrok","tcp","6666").start();
 
         socket = new ServerSocket(6666);
     }

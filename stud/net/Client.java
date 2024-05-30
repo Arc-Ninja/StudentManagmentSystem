@@ -31,8 +31,8 @@ public class Client {
         return k;
     }
     public Client() throws Exception {
-        // socket = new Socket("localhost", 6666);
-        socket = new Socket("0.tcp.in.ngrok.io",15254);
+        socket = new Socket("localhost", 6666);
+        // socket = new Socket("0.tcp.in.ngrok.io",15254);
         in = new DataInputStream(socket.getInputStream());
         out = new DataOutputStream(socket.getOutputStream());
         // oout = new ObjectOutputStream(socket.getOutputStream());
