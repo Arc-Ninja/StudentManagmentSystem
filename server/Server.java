@@ -6,10 +6,14 @@ import java.io.*;
 import stud.*;
 import stud.helpler.*;
 import java.util.concurrent.*;
+import java.util.Vector;
+import java.util.*;
+import java.lang.*;
 
 
 class global{
     protected static int i=0;
+    protected static Vector<Thread> threads = new Vector<Thread>(10);
 }
 
 
@@ -45,6 +49,7 @@ class ClientHandler extends Thread {
         in = new DataInputStream(this.socket.getInputStream());
         out = new DataOutputStream(this.socket.getOutputStream());
         key = ThreadLocalRandom.current().nextInt();
+        System.out.println("connected");
         out.writeInt(key);
         out.flush();
         System.err.println(key);
@@ -62,6 +67,8 @@ class ClientHandler extends Thread {
         std = dec.run();
         std.showDetails();
         out.writeBoolean(true);
+        global.threads.remove(this);
+        global.i--;
         }
         catch(Exception e){
             System.out.println("Wrong Key provided!");
@@ -93,31 +100,49 @@ class ClientHandler extends Thread {
 
 public class Server {
     public ServerSocket socket;
+    protected Process ngrok=null;
 
     public Server() throws Exception {
+
+        // ngrok =  new ProcessBuilder("ngrok","tcp","6666").start();
+
         socket = new ServerSocket(6666);
     }
 
     public static void main(String[] arg) throws Exception {
         // global numth = new global();
-        Thread[] threads = new Thread[10];
         Server server = new Server();
+        Thread t= new Stop(server);
+        t.start();
+
         while (true) {
             
-            if (global.i <= 10) {
+            // if (global.i <= 10) {
                 Socket socket = server.socket.accept();
-                threads[global.i] = new ClientHandler(socket, 100 + global.i);
+                global.threads.add(new ClientHandler(socket, 100 + global.i));
                 // threads[i].
-                threads[global.i].start();
+                global.threads.lastElement().start();
                 socket = null;
                 global.i++;
-            }
-            
-
-
-
+            // }
         }
-
     }
 
+}
+
+class Stop extends Thread{
+    private Server server;
+    public Stop(Server server){
+        this.server= server;
+    }
+    public void run(){
+        java.util.Scanner in = new java.util.Scanner(System.in);
+        while(true){
+            String line = in.nextLine();
+            if(line.equals("stop")|| line.equals("exit")|| line.equals("destroy")||line.equals("0")){
+                server.ngrok.destroy();
+                System.exit(0);
+            }
+        }
+    }
 }
